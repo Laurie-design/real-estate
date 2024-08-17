@@ -1,0 +1,37 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Property>
+ */
+class PropertyFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'title' => fake()->words(2),
+            'description' => fake()->sentence(),
+            'price' => fake()->numberBetween(100, 1000),
+            'address' => fake()->streetAddress(),
+            'image_path' => ['1723779937.jpg', '1723780062.jpg'][rand(0, 1)],
+            'owner_name' => fake()->name(),
+            'owner_phone' => fake()->phoneNumber(),
+            'owner_email' => fake()->email(),
+            'floor_number' => rand(2, 3),
+            'furnished' => false,
+            'total_floors' => rand(6, 7),
+            'surface' => fake()->numberBetween(10, 500),
+            'type' => "maison",
+            'label' => "o",
+            'is_public' => true,
+        ];
+    }
+}
