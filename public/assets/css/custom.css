@@ -1,0 +1,8 @@
+td img.property-image {
+    width: 10rem;
+    height: auto;
+}
+
+textarea.no-resize {
+    resize: none;
+}

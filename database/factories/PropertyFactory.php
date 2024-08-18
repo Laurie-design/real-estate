@@ -17,7 +17,7 @@ class PropertyFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->words(2),
+            'title' => fake()->word(),
             'description' => fake()->sentence(),
             'price' => fake()->numberBetween(100, 1000),
             'address' => fake()->streetAddress(),
@@ -31,7 +31,7 @@ class PropertyFactory extends Factory
             'surface' => fake()->numberBetween(10, 500),
             'type' => "maison",
             'label' => "o",
-            'is_public' => true,
+            'is_public' => [true, false][rand(0,1)],
         ];
     }
 }

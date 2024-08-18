@@ -29,19 +29,23 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/agent/dashboard', [AgentController::class, 'index'])->name('agent.dashboard');
+    Route::get('/agent', [AgentController::class, 'index'])->name('agent.dashboard');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('agent/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('agent/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('agent/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/property/add', [PropertyController::class, 'create'])->name('property.create');
-    Route::post('/properties/store', [PropertyController::class, 'store'])->name('property.store');
+    Route::get('agent/property/list', [PropertyController::class, 'indexAgent'])->name('agent.property.list');
 
-    Route::get('property/edit/{id}', [PropertyController::class, 'edit'])->name('property.edit');
-    Route::put('property/update/{id}', [PropertyController::class, 'update'])->name('property.update');
+    Route::get('agent/property/show/{id}', [PropertyController::class, 'show'])->name('agent.property.show');
 
-    Route::delete('property/delete/{id}', [PropertyController::class, 'destroy'])->name('property.destroy');
+    Route::get('agent/property/add', [PropertyController::class, 'create'])->name('property.create');
+    Route::post('agent/properties/store', [PropertyController::class, 'store'])->name('property.store');
+
+    Route::get('agent/property/edit/{id}', [PropertyController::class, 'edit'])->name('property.edit');
+    Route::put('agent/property/update/{id}', [PropertyController::class, 'update'])->name('property.update');
+
+    Route::delete('agent/property/delete/{id}', [PropertyController::class, 'destroy'])->name('property.destroy');
 
 });
 
@@ -52,7 +56,7 @@ require __DIR__.'/auth.php';
 
 // CLIENT ET VISITEURS
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/properties', [PropertyController::class, 'index'])->name('properties.list');
 

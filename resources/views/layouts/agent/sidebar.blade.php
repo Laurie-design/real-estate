@@ -39,6 +39,28 @@
                         </ul>
                     </div>
                 </li>
+
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-home"></i>
+                    </span>
+                    <h4 class="text-section">Biens</h4>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('agent.property.list') }}">
+                        <i class="fas fa-list"></i>
+                        <p>Liste des biens</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('property.create') }}">
+                        <i class="fas fa-plus"></i>
+                        <p>Ajouter un bien</p>
+                    </a>
+                </li>
+
+
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
@@ -266,6 +288,26 @@
                         </ul>
                     </div>
                 </li>
+
+                
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#account">
+                        <i class="fas fa-user"></i>
+                        <p>Compte</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="account">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="#"><span class="sub-item">Profil</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="sub-item">Logout</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </div>
