@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\SalesController;
 
 /*
 |--------------------------------------------------------------------------
