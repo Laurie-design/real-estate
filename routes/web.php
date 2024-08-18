@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
