@@ -21,10 +21,16 @@
                         <tbody>
                             <tr>
                                 <td style="width: 40%; vertical-align: middle">
-                                    Image
+                                    Images
                                 </td>
                                 <td>
-                                    <img src="{{ asset('storage/' . $property->image_path) }}" alt="{{ $property->title }}" class="property-image">
+                                    <img src="{{ asset('storage/' . $property->image_path) }}" alt="{{ $property->title }}" class="property-image medium">
+                                    @if ($property->image1_path)
+                                        <img src="{{ asset('storage/' . $property->image1_path) }}" alt="{{ $property->title }}" class="property-image medium">   
+                                    @endif
+                                    @if ($property->image2_path)
+                                        <img src="{{ asset('storage/' . $property->image2_path) }}" alt="{{ $property->title }}" class="property-image medium">
+                                    @endif
                                 </td>
                             </tr>
                             <tr>

@@ -23,7 +23,7 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
@@ -40,24 +40,28 @@
                     </div>
                 </li>
 
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon">
-                        <i class="fa fa-home"></i>
-                    </span>
-                    <h4 class="text-section">Biens</h4>
-                </li>
-
                 <li class="nav-item">
-                    <a href="{{ route('agent.property.list') }}">
-                        <i class="fas fa-list"></i>
-                        <p>Liste des biens</p>
+                    <a data-bs-toggle="collapse" href="#account">
+                        <i class="fas fa-building"></i>
+                        <p>Biens</p>
+                        <span class="caret"></span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('property.create') }}">
-                        <i class="fas fa-plus"></i>
-                        <p>Ajouter un bien</p>
-                    </a>
+                    <div class="collapse" id="account">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('agent.property.list') }}">
+                                    <i class="fas fa-list"></i>
+                                    <p>Liste des biens</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('property.create') }}">
+                                    <i class="fas fa-plus"></i>
+                                    <p>Ajouter un bien</p>
+                                </span></a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
 

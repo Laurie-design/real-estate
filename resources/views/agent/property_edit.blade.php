@@ -94,11 +94,8 @@
             </div>
 
             <div class="form-group">
-                <label for="is_public">Visibilité:</label>
-                <select class="form-select" id="is_public" name="is_public" required>
-                    <option value="1" {{ $property->is_public == '1' ? 'selected' : '' }}>Publique</option>
-                    <option value="0" {{ $property->is_public == '0' ? 'selected' : '' }}>Privée</option>
-                </select>
+                <label for="is_public">Public</label>
+                <input type="checkbox" name="is_public" id="is_public" {{ $property->is_public == '1' ? 'checked' : '' }}>
                 @error('furnished')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror

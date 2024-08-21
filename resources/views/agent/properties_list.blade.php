@@ -26,10 +26,7 @@
                                 <tr>
                                     <th>Image</th>
                                     <th>Titre</th>
-                                    <th>Description</th>
                                     <th>prix</th>
-                                    <th>Propriétaire</th>
-                                    <th>Surface</th>
                                     <th>Visibilité</th>
                                     <th>Actions</th>
                                 </tr>
@@ -38,10 +35,7 @@
                                 <tr>
                                     <th>Image</th>
                                     <th>Titre</th>
-                                    <th>Description</th>
                                     <th>prix</th>
-                                    <th>Propriétaire</th>
-                                    <th>Surface</th>
                                     <th>Visibilité</th>
                                     <th>Actions</th>
                                 </tr>
@@ -51,23 +45,20 @@
                                     <tr>
                                         <td><img src="{{ asset('storage/' . $property->image_path) }}" alt="{{ $property->title }}" class="property-image"></td>
                                         <td>{{ $property->title }}</td>
-                                        <td>{{ $property->description }}</td>
                                         <td>{{ $property->price }}</td>
-                                        <td>{{ $property->owner_name }}</td>
-                                        <td>{{ $property->surface }}</td>
                                         <td>{{ $property->is_public ? "Publique" : "Privée" }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <div class="form-button-action">
-                                                <a href="{{ route('agent.property.show', ['id'=>$property->id]) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                <a href="{{ route('agent.property.show', ['id'=>$property->id]) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary dtable-ico-btn" data-original-title="Edit Task">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('property.edit', ['id'=>$property->id]) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-warn btn-lg" data-original-title="Edit Task">
+                                                <a href="{{ route('property.edit', ['id'=>$property->id]) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-warn dtable-ico-btn" data-original-title="Edit Task">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <form action="{{ route('property.destroy', ['id'=>$property->id]) }}" method="POST">
                                                     @csrf
                                                     @method("DELETE")
-                                                    <button type="submit" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger btn-lg" data-original-title="Edit Task">
+                                                    <button type="submit" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger dtable-ico-btn" data-original-title="Edit Task">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </form>

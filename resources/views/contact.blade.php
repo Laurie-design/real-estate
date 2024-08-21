@@ -84,7 +84,7 @@
                 <li><a href="{{ url('properties') }}">Properties</a></li>
                 <li><a href="{{ route('sales') }}">Sales</a></li>
                 <li><a href="{{ url('contact') }}">Contact us</a></li>
-                <li><a href="{{ route('property.create') }}">Ajouter un bien</a></li>
+                {{-- <li><a href="{{ route('property.create') }}">Ajouter un bien</a></li> --}}
             </ul>
         </div>
     </header>

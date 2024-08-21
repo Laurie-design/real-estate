@@ -14,7 +14,6 @@ class Property extends Model
         'description',
         'price',
         'address',
-        'image_path',
         'owner_name',
         'owner_phone',
         'owner_email',
@@ -24,6 +23,9 @@ class Property extends Model
         'total_floors',
         'surface',
         'type',
-        'label'
+        'label',
+        'image_path',
+        'image1_path',
+        'image2_path',
     ];
 }

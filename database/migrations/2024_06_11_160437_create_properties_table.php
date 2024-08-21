@@ -15,6 +15,8 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->string('address');
             $table->string('image_path')->nullable();
+            $table->string('image1_path')->nullable();
+            $table->string('image2_path')->nullable();
             $table->string('owner_name');
             $table->string('owner_phone');
             $table->string('owner_email');

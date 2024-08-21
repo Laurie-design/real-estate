@@ -94,11 +94,8 @@
             </div>
 
             <div class="form-group">
-                <label for="is_public">Visibilité:</label>
-                <select class="form-select" id="is_public" name="is_public" required>
-                    <option value="1" {{ old('is_public') == '1' ? 'selected' : '' }}>Publique</option>
-                    <option value="0" {{ old('is_public') == '0' ? 'selected' : '' }}>Privée</option>
-                </select>
+                <label for="is_public">Public</label>
+                <input type="checkbox" name="is_public" id="is_public" {{ old('is_public') == '1' ? 'checked' : '' }}>
                 @error('furnished')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
@@ -145,6 +142,20 @@
                 <label for="image">Image du bien:</label>
                 <input class="form-control" type="file" id="image" name="image" accept="image/*" required>
                 @error('image')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="image1">Image supplémentaire du bien</label>
+                <input class="form-control" type="file" id="image1" name="image1" accept="image/*">
+                @error('image1')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="image2">Image supplémentaire du bien</label>
+                <input class="form-control" type="file" id="image2" name="image2" accept="image/*">
+                @error('image2')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>

@@ -1,8 +1,22 @@
 td img.property-image {
-    width: 10rem;
-    height: auto;
+    height: 4rem;
+    width: auto;
+}
+
+td img.property-image.medium {
+    height: 8rem;
+    width: auto;
 }
 
 textarea.no-resize {
     resize: none;
+}
+
+.table>tbody>tr>td {
+    padding: 5px 10px !important;
+}
+
+.dtable-ico-btn {
+    padding: 5px;
+    font-size: 1.1em;
 }

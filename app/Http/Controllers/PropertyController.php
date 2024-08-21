@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Property;
+use Illuminate\Support\Str;
 
 class PropertyController extends Controller
 {
@@ -44,20 +45,32 @@ class PropertyController extends Controller
             'owner_email' => 'required|email|max:255',
             'floor_number' => 'required|integer',
             'furnished' => 'required|boolean',
-            'is_public' => 'required|boolean',
             'total_floors' => 'required|integer',
             'surface' => 'required|integer',
             'label' => 'required|string|max:255',
             'type' => 'required|string|max:50',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         
         try {
             $imageName = null;
+            $image1Name = null;
+            $image2Name = null;
             if ($request->hasFile('image')) {
-                $imageName = time() . '.' . $request->image->extension();
+                $imageName = Str::random(15) . '.' . $request->image->extension();
                 $request->image->move(public_path('storage'), $imageName);
             }
+            if ($request->hasFile('image1')) {
+                $image1Name = Str::random(15) . '.' . $request->image1->extension();
+                $request->image1->move(public_path('storage'), $image1Name);
+            }
+            if ($request->hasFile('image2')) {
+                $image2Name = Str::random(15) . '.' . $request->image2->extension();
+                $request->image2->move(public_path('storage'), $image2Name);
+            }
+            // dd($image1Name, $image2Name, $imageName);
         } catch (\Exception $e) {
             return redirect()->back('agent.property.list')->with('success','Propriété ajoutée avec succès!');
         }
@@ -72,12 +85,14 @@ class PropertyController extends Controller
             'owner_email' => $request->owner_email,
             'floor_number' => $request->floor_number,
             'furnished' => $request->furnished,
-            'is_public' => $request->is_public,
+            'is_public' => $request->input('is_public', false) ? 1 : 0,
             'total_floors' => $request->total_floors,
             'surface' => $request->surface,
             'label' => $request->label,
             'type' => $request->type,
             'image_path' => $imageName,
+            'image1_path' => $image1Name,
+            'image2_path' => $image2Name,
         ]);
 
         return redirect()->route('agent.property.list')->with('success','Propriété ajoutée avec succès!');
@@ -109,6 +124,7 @@ class PropertyController extends Controller
         ]);
 
         $property = Property::findOrFail($id);
+        $validatedData['is_public'] = $request->input('is_public', false) ? 1 : 0;
 
         $property->update($validatedData);
 
