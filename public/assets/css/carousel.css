@@ -1,0 +1,21 @@
+.carousel-inner {
+    position: relative;
+}
+
+.carousel-inner > img {
+    opacity: 0;
+    width: 100;
+    height: auto;
+    position: relative;
+    transform: translate(100%, 0);
+    transition: transform 0.5s;
+}
+
+.carousel-inner > img.active {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+.carousel-inner > img.previous {
+    opacity: 1;
+    transform: translate(-100%, 0);
+}
