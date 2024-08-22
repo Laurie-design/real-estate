@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Liste des Propriétés</title>
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
@@ -107,17 +106,11 @@
         @else
             @foreach ($properties as $property)
                 <div class="property-item">
-                    <div id="{{ $property->id."carousel" }}" class="carousel slide" data-ride="carousel">
+                    <div id="{{ $property->id."carousel" }}" class="lite-carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{ asset('storage/' . $property->image_path) }}" alt="First slide">
-                          </div>
-                          <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('storage/' . $property->image1_path) }}" alt="Second slide">
-                          </div>
-                          <div class="carousel-item">
                             <img class="d-block w-100" src="{{ asset('storage/' . $property->image2_path) }}" alt="Third slide">
-                          </div>
+                            <img class="d-block w-100" src="{{ asset('storage/' . $property->image_path) }}" alt="First slide">
+                            <img class="d-block w-100" src="{{ asset('storage/' . $property->image1_path) }}" alt="Second slide">
                         </div>
                         <a class="carousel-control-prev" href="#{{ $property->id."carousel" }}" role="button" data-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -127,7 +120,7 @@
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="sr-only">Next</span>
                         </a>
-                      </div>
+                    </div>
                     {{-- <img src="{{ asset('storage/' . $property->image_path) }}" alt="Image du Bien"> --}}
                     <div class="property-info">
                         <h2><a href="{{ route('property.show', $property->id) }}">{{ $property->title }}</a></h2>
@@ -167,7 +160,6 @@
         </div>
     </section>
 
-    <script src="{{ URL::asset('assets/js/core/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/') }}"></script>
 
 </body>
