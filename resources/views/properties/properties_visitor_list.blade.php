@@ -7,80 +7,8 @@
     <title>Liste des Propriétés</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
-        /* Styles spécifiques pour la liste des propriétés */
-        .properties-container {
-            max-width: 1200px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .property-item {
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .property-item img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .property-info {
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .property-info h2 {
-            margin: 0;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .property-info .address {
-            margin-top: auto;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .property-info .price {
-            font-size: 16px;
-            font-weight: bold;
-            color: #000;
-            text-align: right;
-            margin-top: 10px;
-        }
-
-        .property-info .details-button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            text-align: center;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        .property-info .details-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/properties_client_list.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/carousel.css') }}">
 </head>
 <body>
 
@@ -108,18 +36,14 @@
                 <div class="property-item">
                     <div id="{{ $property->id."carousel" }}" class="lite-carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <img class="d-block w-100" src="{{ asset('storage/' . $property->image2_path) }}" alt="Third slide">
-                            <img class="d-block w-100" src="{{ asset('storage/' . $property->image_path) }}" alt="First slide">
-                            <img class="d-block w-100" src="{{ asset('storage/' . $property->image1_path) }}" alt="Second slide">
+                            <img class=" active" src="{{ asset('storage/' . $property->image_path) }}" alt="First slide">
+                            @if ($property->image1_path)
+                                <img class="" src="{{ asset('storage/' . $property->image1_path) }}" alt="Second slide">
+                            @endif
+                            @if ($property->image2_path)
+                                <img class="" src="{{ asset('storage/' . $property->image2_path) }}" alt="Third slide">  
+                            @endif
                         </div>
-                        <a class="carousel-control-prev" href="#{{ $property->id."carousel" }}" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#{{ $property->id."carousel" }}" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
                     </div>
                     {{-- <img src="{{ asset('storage/' . $property->image_path) }}" alt="Image du Bien"> --}}
                     <div class="property-info">
@@ -160,6 +84,7 @@
         </div>
     </section>
 
+    <script src="{{ URL::asset('assets/js/carousel.js') }}"></script>
     <script src="{{ URL::asset('assets/js/') }}"></script>
 
 </body>
