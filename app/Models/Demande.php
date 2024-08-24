@@ -9,14 +9,9 @@ class Demande extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'dateHeure',
-        'nb_chambres',
-        'type_bien',
-        'details',
-    ];
+    protected $fillable = [];
 
-    public function user(){
-        return $this->BelongsTo(\App\Models\User::class);
+    public function property() {
+        return $this->belongsTo(Property::class);
     }
 }

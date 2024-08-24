@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DemandeController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\RequeteController;
 use App\Http\Controllers\SalesController;
 
 /*
@@ -37,6 +39,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('agent/property/list', [PropertyController::class, 'indexAgent'])->name('agent.property.list');
 
+    Route::get('agent/requetes/list', [RequeteController::class, 'index'])->name('agent.requetes.list');
+
+    Route::get('agent/demandes/list', [DemandeController::class, 'index'])->name('agent.demandes.list');
+
     Route::get('agent/property/show/{id}', [PropertyController::class, 'show'])->name('agent.property.show');
 
     Route::get('agent/property/add', [PropertyController::class, 'create'])->name('property.create');
@@ -61,6 +67,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/properties', [PropertyController::class, 'index'])->name('properties.list');
 
 Route::get('property/{id}', [PropertyController::class, 'visitorShow'])->name('property.show');
+
+Route::get('/requete/create', [RequeteController::class, 'create'])->name('requete.create');
+Route::get('/requete/store', [RequeteController::class, 'store'])->name('requete.store');
+
+Route::post('/demande/store/{id}', [DemandeController::class, 'store'])->name('demande.store');
 
 
 

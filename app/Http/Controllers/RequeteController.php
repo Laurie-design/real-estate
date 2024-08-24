@@ -12,15 +12,16 @@ class RequeteController extends Controller
      */
     public function index()
     {
-        //
+        $requetes = Requete::all();
+        return view("agent.requetes_list", compact("requetes"));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view("requete.requete_visitor_new")->with("input",$request->all());
     }
 
     /**
@@ -28,7 +29,21 @@ class RequeteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "tel"=> "required",
+            "type"=> "required",
+        ], [
+            "tel.required" => "Veuillez entrer votre numéro de téléphone",
+        ]);
+        $newReq = new Requete();
+        $newReq->tel_client = $request->tel;
+        $newReq->type = $request->type;
+        $newReq->surface_min = $request->surface_min;
+        $newReq->surface_max = $request->surface_max;
+        $newReq->price_max = $request->price_max;
+        $newReq->description = $request->search;
+        $newReq->save();
+        return redirect()->route("properties.list")->with("success","Votre requête a été envoyée avec succès");
     }
 
     /**

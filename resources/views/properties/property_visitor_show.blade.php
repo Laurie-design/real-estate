@@ -6,64 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Détails du Bien Immobilier</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/properties_client_list.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <style>
-        .container {
-            width: 80%;
-            margin: auto;
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .property-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .property-details {
-            margin-bottom: 20px;
-        }
-
-        .property-details h2 {
-            color: #333;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-start;
-        }
-
-        .buttons a, .buttons button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .buttons a:hover, .buttons button:hover {
-            background-color: #218838;
-        }
-
-        .buttons form {
-            display: inline;
-        }
-
-        .buttons form button {
-            background-color: #dc3545;
-        }
-
-        .buttons form button:hover {
-            background-color: #c82333;
-        }
-    </style>
 </head>
 <body>
     <!-- Include the header -->
@@ -78,40 +23,50 @@
                 <li><a href="{{ route('sales') }}">Sales</a></li>
                 <li><a href="{{ route('properties.list') }}">Properties</a></li>
                 <li><a href="{{ route('contact') }}">Contact us</a></li>
-                <li><a href="{{ route('property.create') }}">Ajouter un bien</a></li>
+              
             </ul>
         </div>
     </header>
 
     <!-- Property details section -->
-    <div id="property-{{ $property->id }}" class="container">
+    <div id="property-{{ $property->id }}" class="container property-container">
         <img src="{{ asset('storage/' . $property->image_path) }}" alt="{{ $property->title }}" class="property-image">
 
         <div class="property-details">
             <h2>{{ $property->title }}</h2>
-            <p><strong>Description:</strong> {{ $property->description }}</p>
-            <p><strong>Prix:</strong> €{{ number_format($property->price, 2) }}</p>
-            <p><strong>Adresse:</strong> {{ $property->address }}</p>
-            <p><strong>Propriétaire:</strong> {{ $property->owner_name }}</p>
-            <p><strong>Téléphone:</strong> {{ $property->owner_phone }}</p>
-            <p><strong>Email:</strong> {{ $property->owner_email }}</p>
-            <p><strong>Numéro d'étage:</strong> {{ $property->floor_number }}</p>
-            <p><strong>Meublé:</strong> {{ $property->furnished ? 'Oui' : 'Non' }}</p>
-            <p><strong>Nombre d'étages:</strong> {{ $property->total_floors }}</p>
-            <p><strong>Surface:</strong> {{ $property->surface }} m²</p>
-            <p><strong>Type:</strong> {{ $property->type }}</p>
-            <p><strong>Libellé:</strong> {{ $property->label }}</p>
+            <p class=""><strong>Description:</strong> {{ $property->description }}</p>
+            <p class=""><strong>Prix:</strong> {{ number_format($property->price, 2) }} Fcfa</p>
+            <p class=""><strong>Adresse:</strong> {{ $property->address }}</p>
+            <p class=""><strong>Propriétaire:</strong> {{ $property->owner_name }}</p>
+            <p class=""><strong>Téléphone:</strong> {{ $property->owner_phone }}</p>
+            <p class=""><strong>Email:</strong> {{ $property->owner_email }}</p>
+            <p class=""><strong>Numéro d'étage:</strong> {{ $property->floor_number }}</p>
+            <p class=""><strong>Meublé:</strong> {{ $property->furnished ? 'Oui' : 'Non' }}</p>
+            <p class=""><strong>Nombre d'étages:</strong> {{ $property->total_floors }}</p>
+            <p class=""><strong>Surface:</strong> {{ $property->surface }} m²</p>
+            <p class=""><strong>Type:</strong> {{ $property->type }}</p>
         </div>
 
-        <div class="buttons">
-            <a href="{{ route('property.edit', $property->id) }}">Modifier</a>
-            <form action="{{ route('property.destroy', $property->id) }}" method="POST" onsubmit="return confirmDelete(event, {{ $property->id }});">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Supprimer</button>
-            </form>
-        </div>
+        <br>
+        <br>
+        
+        <p class="invitation-demande">
+            Ce bien vous intéresse? Remplissez le formulaire ci dessous et faites une demande.
+        </p>
+
+        <form action="{{ route('demande.store', ['id'=>$property->id]) }}" method="post" class="col-12 col-md-6">
+            @csrf
+            <div class="form-group">
+                <label for="tel">Votre numéro de téléphone</label>
+                <input type="text" id="tel" name="tel" class="form-control">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-submit">Demander</button>
+            </div>
+        </form>
+        
     </div>
+
 
     <!-- Include the footer -->
     <section class="footer">

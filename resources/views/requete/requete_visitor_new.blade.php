@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/properties_client_list.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/carousel.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/properties_client_list.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/carousel.css') }}"> --}}
 </head>
 <body>
 
@@ -28,14 +28,17 @@
         </div>
     </header>
 
-    <section id="search-form" class="">
-        <form action="" method="GET">
-            <div class="form-row">
-              <div class="col-6">
-                <label for="">Que recherchez vous?</label>
-                <input type="text" class="form-control" name="search" placeholder="" value="{{ isset($input['search']) ? $input['search'] :'' }}">
-              </div>
-              <div class="col-6">
+    
+    <section id="search-form" class="container">
+        <h2 class="pt-5 pb-3 mx-4">Envoyer une requête</h2>
+        <form action="{{ route('requete.store') }}" method="GET" class="col-12 col-md-6 mx-2">
+            <div class="form">
+                <div class="form-group">
+                    <label for="tel_client">Num. de téléphone</label>
+                    <input type="text" id="tel_client" name="tel" class="form-control">
+                    <p class="text-danger">@error('tel'){{ $message }}@enderror</p>
+                </div>
+              <div class="form-group">
                 <label for="">Type de bien</label>
                 <select name="type" id="" class="form-control">
                     <option value=""></option>
@@ -45,72 +48,29 @@
                     <option value="villa" {{ isset($input['type']) && $input['type']=='villa' ? 'selected' : '' }}>Villa</option>
                 </select>
               </div>
-              <div class="col">
+              <div class="form-group">
                 <label for="">Prix min</label>
                 <input type="number" name="price_min" min="0" class="form-control" placeholder="" value={{ isset($input['price_min']) && $input['price_min'] ? $input['price_min'] : '' }}>
               </div>
-              <div class="col">
+              <div class="form-group">
                 <label for="">Prix max</label>
                 <input type="number" name="price_max" min="0" class="form-control" placeholder="" value={{ isset($input['price_max']) && $input['price_max'] ? $input['price_max'] : '' }}>
               </div>
-              <div class="col">
+              <div class="form-group">
                 <label for="">Surface min</label>
                 <input type="number" name="surface_min" min="0" class="form-control" placeholder="" value={{ isset($input['surface_min']) && $input['surface_min'] ? $input['surface_min'] : '' }}>
               </div>
-              <div class="col">
+              <div class="form-group">
                 <label for="">Surface max</label>
                 <input type="number" name="surface_max" min="0" class="form-control" placeholder="" value={{ isset($input['surface_max']) && $input['surface_max'] ? $input['surface_max'] : '' }}>
               </div>
+              <div class="form-group">
+                <label for="">Décrivez votre besoin</label>
+                <textarea name="search" id="" cols="30" rows="5" class="form-control">{{ isset($input['search']) ? $input['search'] :'' }}</textarea>
+              </div>
             </div>
-            <a href="{{ route('properties.list') }}" class="btn btn-danger my-2 ml-auto">Effacer la recherche</a>
-            <button type="submit" class="btn btn-primary my-2 ml-auto">Rechercher</button>
+            <button type="submit" class="btn btn-primary my-2 ml-auto">Envoyer la requete</button>
           </form>
-    </section>
-
-    <section class="properties-container">
-        {{-- <h1>Liste des Propriétés</h1> --}}
-        @if ($properties->isEmpty())
-            <p>
-                Aucune propriété disponible. <br>
-                <a href="{{ route('requete.create', [
-                    'search'=>isset($input['search']) ? $input['search'] :'',
-                    'type'=>isset($input['type']) ? $input['type'] :'',
-                    'price_min'=>isset($input['price_min']) ? $input['price_min'] :'',
-                    'price_max'=>isset($input['price_max']) ? $input['price_max'] :'',
-                    'surface_min'=>isset($input['surface_min']) ? $input['surface_min'] :'',
-                    'surface_max'=>isset($input['surface_max']) ? $input['surface_max'] :'',
-                ]) }}">
-                    Envoyer une requête
-                </a>
-            </p>
-        @else
-            @foreach ($properties as $property)
-                <div class="property-item">
-                    <div id="{{ $property->id."carousel" }}" class="lite-carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <img class=" active" src="{{ asset('storage/' . $property->image_path) }}" alt="First slide">
-                            @if ($property->image1_path)
-                                <img class="" src="{{ asset('storage/' . $property->image1_path) }}" alt="Second slide">
-                            @endif
-                            @if ($property->image2_path)
-                                <img class="" src="{{ asset('storage/' . $property->image2_path) }}" alt="Third slide">  
-                            @endif
-                        </div>
-                    </div>
-                    {{-- <img src="{{ asset('storage/' . $property->image_path) }}" alt="Image du Bien"> --}}
-                    <div class="property-info">
-                        <h2><a href="{{ route('property.show', $property->id) }}">{{ $property->title }}</a></h2>
-                        <p class="info-p description">{{ $property->description }}</p>
-                        <p class="info-p address"> {{ $property->address }}</p>
-                        <p class="info-p surface">Surface : {{ $property->surface }} m²</p>
-                        <div class="action-group">
-                            <a href="{{ route('property.show', ['id'=>$property->id]) }}" class="btn btn-primary">Voir</a>
-                            <p class="info-p price">{{ number_format($property->price, 2) }} Fcfa</p>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        @endif
     </section>
 
     <section class="footer">

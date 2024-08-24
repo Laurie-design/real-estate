@@ -13,15 +13,9 @@ return new class extends Migration
     {
         Schema::create('demandes', function (Blueprint $table) {
             $table->id();
-            $table->dateTime("dateHeure");
-            $table->integer('nb_chambres');
-            $table->string('type_bien');
-             $table->text('details');
+            $table->string('tel_client');
+            $table->unsignedInteger('property_id');
             $table->timestamps();
-
-            $table->foreignIdFor(\App\Models\Property::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
-
         });
     }
 

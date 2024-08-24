@@ -79,7 +79,6 @@
                         <h3>{{ $property->title }}</h3>
                         <p>{{ $property->address }}</p>
                     </div>
-                    <a href="{{ route('property.show', $property->id) }}" class="btn">Voir Détail</a>
                 </div>
             </div>
             @endforeach

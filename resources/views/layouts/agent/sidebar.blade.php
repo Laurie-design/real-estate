@@ -41,12 +41,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#account">
+                    <a data-bs-toggle="collapse" href="#properties">
                         <i class="fas fa-building"></i>
                         <p>Biens</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="account">
+                    <div class="collapse" id="properties">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{ route('agent.property.list') }}">
@@ -64,8 +64,44 @@
                     </div>
                 </li>
 
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#requetes">
+                        <i class="fas fa-building"></i>
+                        <p>Requêtes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="requetes">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('agent.requetes.list') }}">
+                                    <i class="fas fa-list"></i>
+                                    <p>Liste des requêtes</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-                <li class="nav-section">
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#demande">
+                        <i class="fas fa-building"></i>
+                        <p>Demandes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="demande">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('agent.demandes.list') }}">
+                                    <i class="fas fa-list"></i>
+                                    <p>Liste des demandes</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                {{-- <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
@@ -291,7 +327,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 
                 <li class="nav-item">
@@ -306,7 +342,7 @@
                                 <a href="#"><span class="sub-item">Profil</span></a>
                             </li>
                             <li>
-                                <a href="#"><span class="sub-item">Logout</span></a>
+                                <a href="{{ route('logout') }}"><span class="sub-item">Se déconnecter</span></a>
                             </li>
                         </ul>
                     </div>

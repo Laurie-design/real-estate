@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Demande;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class DemandeController extends Controller
@@ -12,7 +13,8 @@ class DemandeController extends Controller
      */
     public function index()
     {
-        //
+        $demandes = Demande::all();
+        return view("agent.demandes_list", compact("demandes"));
     }
 
     /**
@@ -26,9 +28,17 @@ class DemandeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->validate([
+            'tel'=> 'required',
+        ]);
+        $property = Property::findOrFail($id);
+        $newDemande = new Demande();
+        $newDemande->property_id = $id;
+        $newDemande->tel_client = $request->tel;
+        $newDemande->save();
+        return redirect()->back()->with('success',"Demande enregistrée");
     }
 
     /**

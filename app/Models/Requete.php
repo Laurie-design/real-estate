@@ -9,11 +9,7 @@ class Requete extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'surfaceMaximale',
-         'prixMaximal',
-         'address',
-    ];
+    protected $fillable = [];
 
     public function user(){
         return $this->BelongsTo(\App\Models\User::class);

@@ -35,7 +35,7 @@
             </div>
 
             <div class="form-group">
-                <label for="price">Prix (€):</label>
+                <label for="price">Prix (FCFA):</label>
                 <input class="form-control" type="number" id="price" name="price" value="{{ old('price') }}" placeholder="Prix" required>
                 @error('price')
                     <div style="color: red;">{{ $message }}</div>

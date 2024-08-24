@@ -1,7 +1,12 @@
 /* Styles spécifiques pour la liste des propriétés */
+#search-form {
+    margin: 8rem auto 0 auto;
+    padding: 1px 2rem 1rem 2rem;
+}
+
+
 .properties-container {
     max-width: 1200px;
-    margin: 50px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -17,6 +22,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    max-width: 20rem;
 }
 
 .property-item img {
@@ -40,6 +46,10 @@
     margin-bottom: 10px;
 }
 
+.property-info .info-p {
+    margin: 0;
+}
+
 .property-info .address {
     margin-top: auto;
     font-size: 14px;
@@ -47,11 +57,10 @@
 }
 
 .property-info .price {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     color: #000;
     text-align: right;
-    margin-top: 10px;
 }
 
 .property-info .details-button {
@@ -69,4 +78,27 @@
 
 .property-info .details-button:hover {
     background-color: #0056b3;
+}
+
+.action-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.action-group a {
+    padding: 0.2rem 1rem;
+}
+
+.property-container {
+    padding: 1rem;
+}
+
+.property-details h2 {
+    margin: 2rem 0;
+}
+
+.property-details p {
+    margin-bottom: 1rem;
 }

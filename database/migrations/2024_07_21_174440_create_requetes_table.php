@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('requetes', function (Blueprint $table) {
             $table->id();
-            $table->integer("surfaceMaximale")->nullable;
-            $table->integer("prixMaximal")->nullable;
-            $table->string("address")->nullable;
+            $table->string('tel_client');
+            $table->string("type")->nullable();
+            $table->integer("surface_min")->nullable();
+            $table->integer("surface_max")->nullable();
+            $table->integer("price_max")->nullable();
+            $table->string("description")->nullable();
             $table->timestamps();
-
-
-            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
         });
     }
 

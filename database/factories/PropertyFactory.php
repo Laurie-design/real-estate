@@ -22,6 +22,7 @@ class PropertyFactory extends Factory
             'price' => fake()->numberBetween(100, 1000),
             'address' => fake()->streetAddress(),
             'image_path' => ['1723779937.jpg', '1723780062.jpg'][rand(0, 1)],
+            'image1_path' => ['JiHrecqJZd4IR73.jpg', 'ywEmP8u9UfGvX8D.jpg'][rand(0, 1)],
             'owner_name' => fake()->name(),
             'owner_phone' => fake()->phoneNumber(),
             'owner_email' => fake()->email(),
