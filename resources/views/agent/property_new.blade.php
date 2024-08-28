@@ -51,25 +51,14 @@
             </div>
 
             <div class="form-group">
-                <label for="owner_name">Nom du propriétaire:</label>
-                <input class="form-control" type="text" id="owner_name" name="owner_name" value="{{ old('owner_name') }}" placeholder="Nom du propriétaire" required>
-                @error('owner_name')
-                    <div style="color: red;">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="owner_phone">Téléphone:</label>
-                <input class="form-control" type="text" id="owner_phone" name="owner_phone" value="{{ old('owner_phone') }}" placeholder="Téléphone" required>
-                @error('owner_phone')
-                    <div style="color: red;">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="owner_email">Email:</label>
-                <input class="form-control" type="email" id="owner_email" name="owner_email" value="{{ old('owner_email') }}" placeholder="Email" required>
-                @error('owner_email')
+                <label for="owner_id">Propriétaire</label>
+                <select name="owner_id" id="owner_id" class="form-control" required>
+                    <option value="">--</option>
+                    @foreach ($owners as $owner)
+                        <option value="{{ $owner->id }}" @if(old('owner_id')==$owner->id) selected @endif>{{ $owner->name }}</option>
+                    @endforeach
+                </select>
+                @error('owner_id')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
@@ -113,14 +102,6 @@
                 <label for="surface">Surface (m²):</label>
                 <input class="form-control" type="number" id="surface" name="surface" value="{{ old('surface') }}" placeholder="Surface en m²" required>
                 @error('surface')
-                    <div style="color: red;">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="label">Libellé:</label>
-                <input class="form-control" type="text" id="label" name="label" value="{{ old('label') }}" placeholder="Libellé" required>
-                @error('label')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>

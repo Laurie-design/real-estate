@@ -17,16 +17,13 @@ return new class extends Migration
             $table->string('image_path')->nullable();
             $table->string('image1_path')->nullable();
             $table->string('image2_path')->nullable();
-            $table->string('owner_name');
-            $table->string('owner_phone');
-            $table->string('owner_email');
             $table->integer('floor_number');
             $table->boolean('furnished');
             $table->integer('total_floors');
             $table->integer('surface');
             $table->string('type');
-            $table->string('label');
             $table->boolean('is_public')->default(false);
+            $table->unsignedInteger('owner_id');
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@
                 <li><a href="{{ route('sales') }}">Sales</a></li>
                 <li><a href="{{ route('properties.list') }}">Properties</a></li>
                 <li><a href="{{ route('contact') }}">Contact us</a></li>
-                {{-- <li><a href="{{ route('property.create') }}">Ajouter un bien</a></li> --}}
+                <li><a href="{{ route('agent.dashboard') }}">Vous êtes agent?</a></li>
             </ul>
         </div>
     </header>

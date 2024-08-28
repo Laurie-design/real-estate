@@ -38,7 +38,7 @@ class DemandeController extends Controller
         $newDemande->property_id = $id;
         $newDemande->tel_client = $request->tel;
         $newDemande->save();
-        return redirect()->back()->with('success',"Demande enregistrée");
+        return redirect()->route('properties.list')->with('success',"Demande enregistrée");
     }
 
     /**

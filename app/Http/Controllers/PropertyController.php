@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Owner;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use Illuminate\Http\Response;
@@ -44,7 +45,8 @@ class PropertyController extends Controller
 
 
     public function create() {
-        return view('agent.property_new');
+        $owners = Owner::all();
+        return view('agent.property_new', compact('owners'));
     }
 
     public function store(Request $request) {
@@ -53,14 +55,12 @@ class PropertyController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'address' => 'required|string',
-            'owner_name' => 'required|string|max:255',
-            'owner_phone' => 'required|string|max:20',
-            'owner_email' => 'required|email|max:255',
+            'owner_id' => 'required',
             'floor_number' => 'required|integer',
             'furnished' => 'required|boolean',
             'total_floors' => 'required|integer',
             'surface' => 'required|integer',
-            'label' => 'required|string|max:255',
+            // 'label' => 'required|string|max:255',
             'type' => 'required|string|max:50',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -93,15 +93,13 @@ class PropertyController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'address' => $request->address,
-            'owner_name' => $request->owner_name,
-            'owner_phone' => $request->owner_phone,
-            'owner_email' => $request->owner_email,
+            'owner_id' => $request->owner_id,
             'floor_number' => $request->floor_number,
             'furnished' => $request->furnished,
             'is_public' => $request->input('is_public', false) ? 1 : 0,
             'total_floors' => $request->total_floors,
             'surface' => $request->surface,
-            'label' => $request->label,
+            // 'label' => $request->label,
             'type' => $request->type,
             'image_path' => $imageName,
             'image1_path' => $image1Name,
@@ -114,7 +112,8 @@ class PropertyController extends Controller
     public function edit($id)
     {
         $property = Property::findOrFail($id);
-        return view('agent.property_edit', compact('property'));
+        $owners = Owner::all();
+        return view('agent.property_edit', compact('property', 'owners'));
     }
 
     public function update(Request $request, $id)
@@ -124,15 +123,13 @@ class PropertyController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'address' => 'required|string|max:255',
-            'owner_name' => 'required|string|max:255',
-            'owner_phone' => 'required|string|max:15',
-            'owner_email' => 'required|email|max:255',
+            'owner_id' => 'required',
             'floor_number' => 'required|integer',
             'furnished' => 'required|boolean',
             'total_floors' => 'required|integer',
             'surface' => 'required|integer',
             'type' => 'required|string|max:255',
-            'label' => 'required|string|max:255',
+            // 'label' => 'required|string|max:255',
             'image' => 'nullable|image|max:2048',
         ]);
 

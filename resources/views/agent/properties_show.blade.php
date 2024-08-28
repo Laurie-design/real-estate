@@ -67,26 +67,10 @@
                             </tr>
                             <tr>
                                 <td style="width: 40%; vertical-align: middle">
-                                    Nom du propriétaire
+                                    Propriétaire
                                 </td>
                                 <td>
-                                    {{ $property->owner_name }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40%; vertical-align: middle">
-                                    Tel du propriétaire
-                                </td>
-                                <td>
-                                    {{ $property->owner_phone }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40%; vertical-align: middle">
-                                    Email du propriétaire
-                                </td>
-                                <td>
-                                    {{ $property->owner_email }}
+                                    {{ $property->owner->name }}
                                 </td>
                             </tr>
                             <tr>
@@ -129,14 +113,7 @@
                                     {{ $property->surface }}
                                 </td>
                             </tr>
-                            <tr>
-                                <td style="width: 40%; vertical-align: middle">
-                                    Libellé
-                                </td>
-                                <td>
-                                    {{ $property->label }}
-                                </td>
-                            </tr>
+                            
                             <tr>
                                 <td style="width: 40%; vertical-align: middle">
                                     Type

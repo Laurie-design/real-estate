@@ -58,7 +58,7 @@
                                 <a href="{{ route('property.create') }}">
                                     <i class="fas fa-plus"></i>
                                     <p>Ajouter un bien</p>
-                                </span></a>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -94,6 +94,30 @@
                                 <a href="{{ route('agent.demandes.list') }}">
                                     <i class="fas fa-list"></i>
                                     <p>Liste des demandes</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#owners">
+                        <i class="fas fa-building"></i>
+                        <p>Propriétaires</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="owners">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('agent.owner.list') }}">
+                                    <i class="fas fa-list"></i>
+                                    <p>Liste des Propriétaires</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('agent.owner.create') }}">
+                                    <i class="fas fa-plus"></i>
+                                    <p>Nouveau propriétaire</p>
                                 </a>
                             </li>
                         </ul>

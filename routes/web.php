@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -37,12 +38,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('agent/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('agent/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('agent/property/list', [PropertyController::class, 'indexAgent'])->name('agent.property.list');
-
+    
     Route::get('agent/requetes/list', [RequeteController::class, 'index'])->name('agent.requetes.list');
-
+    
     Route::get('agent/demandes/list', [DemandeController::class, 'index'])->name('agent.demandes.list');
 
+    // Owners
+
+    Route::get('agent/owner/list', [OwnerController::class, 'index'])->name('agent.owner.list');
+    Route::get('agent/owner/create', [OwnerController::class, 'create'])->name('agent.owner.create');
+    Route::post('agent/owner/store', [OwnerController::class, 'store'])->name('agent.owner.store');
+
+    // Properties
+
+    Route::get('agent/property/list', [PropertyController::class, 'indexAgent'])->name('agent.property.list');
     Route::get('agent/property/show/{id}', [PropertyController::class, 'show'])->name('agent.property.show');
 
     Route::get('agent/property/add', [PropertyController::class, 'create'])->name('property.create');
@@ -84,6 +93,4 @@ Route::post('/demande/store/{id}', [DemandeController::class, 'store'])->name('d
 Route::get('/about', [AboutController::class, 'showAboutPage'])->name('about');
 Route::get('contact', [ContactController::class, 'showContactPage'])->name('contact');
 Route::post('contact/send', [ContactController::class, 'sendContact'])->name('contact.send');
-
-
 Route::get('/sales', [SalesController::class, 'index'])->name('sales');

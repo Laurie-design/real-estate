@@ -37,9 +37,6 @@
             <p class=""><strong>Description:</strong> {{ $property->description }}</p>
             <p class=""><strong>Prix:</strong> {{ number_format($property->price, 2) }} Fcfa</p>
             <p class=""><strong>Adresse:</strong> {{ $property->address }}</p>
-            <p class=""><strong>Propriétaire:</strong> {{ $property->owner_name }}</p>
-            <p class=""><strong>Téléphone:</strong> {{ $property->owner_phone }}</p>
-            <p class=""><strong>Email:</strong> {{ $property->owner_email }}</p>
             <p class=""><strong>Numéro d'étage:</strong> {{ $property->floor_number }}</p>
             <p class=""><strong>Meublé:</strong> {{ $property->furnished ? 'Oui' : 'Non' }}</p>
             <p class=""><strong>Nombre d'étages:</strong> {{ $property->total_floors }}</p>

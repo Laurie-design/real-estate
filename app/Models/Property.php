@@ -14,18 +14,20 @@ class Property extends Model
         'description',
         'price',
         'address',
-        'owner_name',
-        'owner_phone',
-        'owner_email',
+        'owner_id',
         'floor_number',
         'furnished',
         'is_public',
         'total_floors',
         'surface',
         'type',
-        'label',
+        // 'label',
         'image_path',
         'image1_path',
         'image2_path',
     ];
+
+    public function owner() {
+        return $this->belongsTo(Owner::class);
+    }
 }

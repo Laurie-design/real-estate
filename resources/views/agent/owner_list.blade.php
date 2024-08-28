@@ -3,8 +3,11 @@
 @section('content')
     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
         <div>
-            <h3 class="fw-bold mb-3">Liste des Requetes</h3>
-            <h6 class="op-7 mb-2">Liste des requetes</h6>
+            <h3 class="fw-bold mb-3">Liste des Propriétaires</h3>
+            <h6 class="op-7 mb-2">Liste des Propriétaires</h6>
+        </div>
+        <div class="ms-md-auto py-2 py-md-0">
+            <a href="{{ route('agent.owner.create') }}" class="btn btn-primary btn-round">Nouveau propriétaire</a>
         </div>
     </div>
 
@@ -12,41 +15,29 @@
 
         <div class="col-md-12">
             <div class="card">
-                {{-- <div class="card-header">
-                    <h4 class="card-title">Multi Filter Select</h4>
-                </div> --}}
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="multi-filter-select" class="display table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>Type de bien</th>
-                                    <th>Prix maximal</th>
-                                    <th>Surface max.</th>
-                                    <th>Surface min.</th>
-                                    <th>Description</th>
-                                    <th>Tel. client</th>
+                                    <th>Nom</th>
+                                    <th>Email</th>
+                                    <th>Tel</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Type de bien</th>
-                                    <th>Prix maximal</th>
-                                    <th>Surface max.</th>
-                                    <th>Surface min.</th>
-                                    <th>Description</th>
-                                    <th>Tel. client</th>
+                                    <th>Nom</th>
+                                    <th>Email</th>
+                                    <th>Tel</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($requetes as $req)
+                                @foreach ($owners as $owner)
                                     <tr>
-                                        <td>{{ $req->type }}</td>
-                                        <td>{{ $req->price_max }}</td>
-                                        <td>{{ $req->surface_max }}</td>
-                                        <td>{{ $req->surface_min }}</td>
-                                        <td>{{ $req->description }}</td>
-                                        <td>{{ $req->tel_client }}</td>
+                                        <td>{{ $owner->name }}</td>
+                                        <td>{{ $owner->email }}</td>
+                                        <td>{{ $owner->tel }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

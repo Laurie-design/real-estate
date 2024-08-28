@@ -20,7 +20,7 @@
                 <li><a href="{{ url('properties') }}">Properties</a></li>
                 <li><a href="{{ url('sales') }}">Sales</a></li>
                 <li><a href="{{ url('contact') }}">Contact us</a></li>
-                {{-- <li><a href="{{ route('property.create') }}">Ajouter un bien</a></li> --}}
+                <li><a href="{{ route('agent.dashboard') }}">Vous êtes agent?</a></li>
             </ul>
         </div>
     </header>
@@ -29,10 +29,11 @@
         <div class="about-text">
             <span>About us</span>
             <h2>We Provide The Best Property For You!</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora possimus vero nostrum provident. Eligendi optio pariatur repellendus incidunt explicabo facere ad numquam animi.</p>
-            <p>With years of experience in the real estate market, we are committed to providing our clients with the highest level of service and the best properties available. Whether you're looking to buy, sell, or rent, our team is here to help you achieve your real estate goals.</p>
-            <p>Our mission is to create lasting relationships with our clients by providing them with top-quality services, valuable advice, and outstanding results.</p>
-            <a href="#" class="btn">Learn More</a>
+            <p>Avec des années d'expérience sur le marché immobilier, nous nous engageons à fournir à nos clients </br> le plus haut niveau de service et les meilleures propriétés disponibles.  </br> Que vous cherchiez à acheter, vendre ou louer, notre équipe est là pour vous aider à atteindre vos objectifs immobiliers.
+
+            </p>
+            <p>Notre mission est de créer des relations durables avec nos clients en leur fournissant des services  </br>de qualité supérieure, des conseils précieux et des résultats exceptionnels.</p>
+            {{-- <a href="#" class="btn">Learn More</a> --}}
         </div>
     </section>
 
