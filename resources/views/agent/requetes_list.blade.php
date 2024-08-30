@@ -22,8 +22,8 @@
                                 <tr>
                                     <th>Type de bien</th>
                                     <th>Prix maximal</th>
-                                    <th>Surface max.</th>
                                     <th>Surface min.</th>
+                                    <th>Surface max.</th>
                                     <th>Description</th>
                                     <th>Tel. client</th>
                                 </tr>
@@ -32,8 +32,8 @@
                                 <tr>
                                     <th>Type de bien</th>
                                     <th>Prix maximal</th>
-                                    <th>Surface max.</th>
                                     <th>Surface min.</th>
+                                    <th>Surface max.</th>
                                     <th>Description</th>
                                     <th>Tel. client</th>
                                 </tr>
@@ -43,8 +43,8 @@
                                     <tr>
                                         <td>{{ $req->type }}</td>
                                         <td>{{ $req->price_max }}</td>
-                                        <td>{{ $req->surface_max }}</td>
                                         <td>{{ $req->surface_min }}</td>
+                                        <td>{{ $req->surface_max }}</td>
                                         <td>{{ $req->description }}</td>
                                         <td>{{ $req->tel_client }}</td>
                                     </tr>

@@ -72,19 +72,17 @@
     </style>
 </head>
 <body>
-
     <header>
         <div class="nav container">
-            <a href="{{ route('home') }}" class="logo"><i class="bx bx-home-alt-2"></i>Real State</a>
+            <a href="{{ route('home') }}" class="logo"><i class="bx bx-home-alt-2"></i> ImmoPlus</a>
             <input type="checkbox" name="" id="menu">
             <label for="menu"><i class='bx bx-menu' id="menu-icon"></i></label>
             <ul class="navbar">
-                <li><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="{{ url('about') }}">About Us</a></li>
-                <li><a href="{{ url('properties') }}">Properties</a></li>
-                <li><a href="{{ route('sales') }}">Sales</a></li>
-                <li><a href="{{ url('contact') }}">Contact us</a></li>
-                <li><a href="{{ route('agent.dashboard') }}">Vous êtes agent?</a></li>
+                <li><a href="{{ route('home') }}">Accueil</a></li>
+                <li><a href="{{ url('about') }}">À propos de nous</a></li>
+                <li><a href="{{ url('properties') }}">Propriétés</a></li>
+                {{-- <li><a href="{{ url('contact') }}">Contact nous</a></li> --}}
+                <li><a href="{{ route('agent.dashboard') }}" class="btn btn-primary ru-agent">Vous êtes agent?</a></li>
             </ul>
         </div>
     </header>
@@ -115,23 +113,24 @@
 
     <section class="footer">
         <div class="footer-container container">
-            <h2>Real Estate</h2>
+            <h2>ImmoPlus</h2>
             <div class="footer-box">
-                <h3>Quick Links</h3>
-                <a href="#">Agency</a>
-                <a href="#">Building</a>
-                <a href="#">Rates</a>
+                <h3>Liens rapides</h3>
+                <a href="#">Agence</a>
+                <a href="#">Bâtiment</a>
+                <a href="#">Tarifs</a>
             </div>
             <div class="footer-box">
-                <h3>Locations</h3>
-                <a href="#">Birmingham</a>
-                <a href="#">London</a>
-                <a href="#">New York</a>
+                <h3>Emplacements</h3>
+                <a href="#">Lomé</a>
+                <a href="#">Sokodé</a>
+                <a href="#">Kara</a>
             </div>
+            
             <div class="footer-box">
                 <h3>Contact</h3>
-                <a href="#">+44 (0) 800 123 4567</a>
-                <a href="#">yourmail@gmail.com</a>
+                <a href="#">+228 93 25 46 12</a>
+                <a href="#">votremail@gmail.com</a>
                 <div class="social">
                     <a href="#"><i class='bx bxl-facebook'></i></a>
                     <a href="#"><i class='bx bxl-twitter'></i></a>
@@ -142,7 +141,7 @@
     </section>
 
     <div class="copyright">
-        <p>&#169; CarpoolVenam All Right Reserved</p>
+        <p>&#169; CarpoolVenam Tous droits réservés</p>
     </div>
 
 </body>

@@ -68,12 +68,16 @@ header{
     padding: 8px 17px;
     color: var(--text-color);
     font-size: 1rem;
-    text-transform: uppercase;
+    text-decoration: none;
     font-weight: 500;
 }
 .navbar a:hover{
     color: var(--main-color);
 }
+.navbar a.ru-agent:hover {
+    color: white;
+}
+
 #menu-icon{
     font-style: 24px;
     cursor: pointer;
@@ -107,7 +111,7 @@ header{
 .home-text{
     padding-left: 35px;
 }
-.home-text h1{
+.home-text h2{
     color: var(--bg-color);
     font-style: 2rem;
     margin-bottom: 1rem;

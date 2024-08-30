@@ -5,32 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Détails du Bien Immobilier</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/properties_client_list.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
 <body>
     <!-- Include the header -->
     <header>
         <div class="nav container">
-            <a href="#home" class="logo"><i class="bx bx-home-alt-2"></i>Real State</a>
+            <a href="{{ route('home') }}" class="logo"><i class="bx bx-home-alt-2"></i> ImmoPlus</a>
             <input type="checkbox" name="" id="menu">
             <label for="menu"><i class='bx bx-menu' id="menu-icon"></i></label>
             <ul class="navbar">
-                <li><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="{{ route('about') }}">About Us</a></li>
-                <li><a href="{{ route('sales') }}">Sales</a></li>
-                <li><a href="{{ route('properties.list') }}">Properties</a></li>
-                <li><a href="{{ route('contact') }}">Contact us</a></li>
-              
-            </ul>
+                <li><a href="{{ route('home') }}">Accueil</a></li>
+                <li><a href="{{ url('about') }}">À propos de nous</a></li>
+                <li><a href="{{ url('properties') }}">Propriétés</a></li>
+                {{-- <li><a href="{{ url('contact') }}">Contact nous</a></li> --}}
+                <li>
+                    <a href="{{ route('agent.dashboard') }}" class="btn btn-primary ru-agent" >
+                        Vous êtes agent?
+                    </a>
+                </li>
+             </ul>
         </div>
     </header>
 
     <!-- Property details section -->
     <div id="property-{{ $property->id }}" class="container property-container">
-        <img src="{{ asset('storage/' . $property->image_path) }}" alt="{{ $property->title }}" class="property-image">
+        <div class="row">
+            @if ($property->image_path)
+                <div class="col-12 col-sm-4">
+                    <img src="{{ asset('storage/' . $property->image_path) }}" alt="{{ $property->title }}" class="property-image">
+                </div>
+            @endif
+            
+            @if ($property->image1_path)
+                <div class="col-12 col-sm-4">
+                    <img src="{{ asset('storage/' . $property->image1_path) }}" alt="{{ $property->title }}" class="property-image">
+                </div>
+            @endif
+            
+            @if ($property->image2_path)
+                <div class="col-12 col-sm-4">
+                    <img src="{{ asset('storage/' . $property->image2_path) }}" alt="{{ $property->title }}" class="property-image">
+                </div>
+            @endif
+
+        </div>
 
         <div class="property-details">
             <h2>{{ $property->title }}</h2>
@@ -59,32 +81,39 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-submit">Demander</button>
+                <a href="{{ route('properties.list') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Revenir à la liste des biens
+                </a>
             </div>
         </form>
         
     </div>
+    <!-- Bouton Revenir à la liste des biens -->
+
+
 
 
     <!-- Include the footer -->
     <section class="footer">
         <div class="footer-container container">
-            <h2>Real State</h2>
+            <h2>ImmoPlus</h2>
             <div class="footer-box">
-                <h3>Quick Links</h3>
-                <a href="#">Agency</a>
-                <a href="#">Building</a>
-                <a href="#">Rates</a>
+                <h3>Liens rapides</h3>
+                <a href="#">Agence</a>
+                <a href="#">Bâtiment</a>
+                <a href="#">Tarifs</a>
             </div>
             <div class="footer-box">
-                <h3>Locations</h3>
-                <a href="#">Birmingham</a>
-                <a href="#">London</a>
-                <a href="#">New York</a>
+                <h3>Emplacements</h3>
+                <a href="#">Lomé</a>
+                <a href="#">Sokodé</a>
+                <a href="#">Kara</a>
             </div>
+            
             <div class="footer-box">
                 <h3>Contact</h3>
-                <a href="#">+44 (0) 800 123 4567</a>
-                <a href="#">yourmail@gmail.com</a>
+                <a href="#">+228 93 25 46 12</a>
+                <a href="#">votremail@gmail.com</a>
                 <div class="social">
                     <a href="#"><i class='bx bxl-facebook'></i></a>
                     <a href="#"><i class='bx bxl-twitter'></i></a>
@@ -93,12 +122,12 @@
             </div>
         </div>
     </section>
-
+    
     <div class="copyright">
-        <p>&#169; CarpoolVenam All Right Reserved</p>
+        <p>&#169; CarpoolVenam Tous droits réservés</p>
     </div>
 
-    <script>
+    {{-- <script>
         function confirmDelete(event, propertyId) {
             event.preventDefault();
 
@@ -124,6 +153,6 @@
                 });
             }
         }
-    </script>
+    </script> --}}
 </body>
 </html>

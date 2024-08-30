@@ -83,7 +83,7 @@ class PropertyController extends Controller
                 $image2Name = Str::random(15) . '.' . $request->image2->extension();
                 $request->image2->move(public_path('storage'), $image2Name);
             }
-            // dd($image1Name, $image2Name, $imageName);
+            
         } catch (\Exception $e) {
             return redirect()->back('agent.property.list')->with('success','Propriété ajoutée avec succès!');
         }

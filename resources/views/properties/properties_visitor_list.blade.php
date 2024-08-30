@@ -12,20 +12,17 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/carousel.css') }}">
 </head>
 <body>
-
     <header>
         <div class="nav container">
-            <a href="{{ route('home') }}" class="logo"><i class="bx bx-home-alt-2"></i>Real State</a>
+            <a href="{{ route('home') }}" class="logo"><i class="bx bx-home-alt-2"></i> ImmoPlus</a>
             <input type="checkbox" name="" id="menu">
             <label for="menu"><i class='bx bx-menu' id="menu-icon"></i></label>
             <ul class="navbar">
-                <li><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="{{ route('about') }}">About Us</a></li>
-                <li><a href="{{ route('sales') }}">Sales</a></li>
-                <li><a href="{{ route('properties.list') }}">Properties</a></li>
-                <li><a href="{{ route('contact') }}">Contact us</a></li>
-                <li><a href="{{ route('agent.dashboard') }}">Vous êtes agent?</a></li>
-
+                <li><a href="{{ route('home') }}">Accueil</a></li>
+                <li><a href="{{ url('about') }}">À propos de nous</a></li>
+                <li><a href="{{ url('properties') }}">Propriétés</a></li>
+                {{-- <li><a href="{{ url('contact') }}">Contact nous</a></li> --}}
+                <li><a href="{{ route('agent.dashboard') }}" class="btn btn-primary ru-agent">Vous êtes agent?</a></li>
             </ul>
         </div>
     </header>
@@ -104,7 +101,7 @@
                         <h2><a href="{{ route('property.show', $property->id) }}">{{ $property->title }}</a></h2>
                         <p class="info-p description">{{ $property->description }}</p>
                         <p class="info-p address"> {{ $property->address }}</p>
-                        <p class="info-p surface">Surface : {{ $property->surface }} m²</p>
+                        <p class="info-p surface"> {{ $property->surface }} m²</p>
                         <div class="action-group">
                             <a href="{{ route('property.show', ['id'=>$property->id]) }}" class="btn btn-primary">Voir</a>
                             <p class="info-p price">{{ number_format($property->price, 2) }} Fcfa</p>
@@ -113,35 +110,38 @@
                 </div>
             @endforeach
         @endif
-    </section>
-
-    <section class="footer">
-        <div class="footer-container container">
-            <h2>Real State</h2>
-            <div class="footer-box">
-                <h3>Quick Links</h3>
-                <a href="#">Agency</a>
-                <a href="#">Building</a>
-                <a href="#">Rates</a>
-            </div>
-            <div class="footer-box">
-                <h3>Locations</h3>
-                <a href="#">Birmingham</a>
-                <a href="#">London</a>
-                <a href="#">New York</a>
-            </div>
-            <div class="footer-box">
-                <h3>Contact</h3>
-                <a href="#">+44 (0) 800 123 4567</a>
-                <a href="#">yourmail@gmail.com</a>
-                <div class="social">
-                    <a href="#"><i class='bx bxl-facebook'></i></a>
-                    <a href="#"><i class='bx bxl-twitter'></i></a>
-                    <a href="#"><i class='bx bxl-instagram'></i></a>
+        {{-- <section class="footer">
+            <div class="footer-container container">
+                <h2>ImmoPlus</h2>
+                <div class="footer-box">
+                    <h3>Liens rapides</h3>
+                    <a href="#">Agence</a>
+                    <a href="#">Bâtiment</a>
+                    <a href="#">Tarifs</a>
+                </div>
+                <div class="footer-box">
+                    <h3>Emplacements</h3>
+                    <a href="#">Lomé</a>
+                    <a href="#">Sokodé</a>
+                    <a href="#">Kara</a>
+                </div>
+                
+                <div class="footer-box">
+                    <h3>Contact</h3>
+                    <a href="#">+228 93 25 46 12</a>
+                    <a href="#">votremail@gmail.com</a>
+                    <div class="social">
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    
+        <div class="copyright">
+            <p>&#169; CarpoolVenam Tous droits réservés</p>
+        </div> --}}
 
     <script src="{{ URL::asset('assets/js/carousel.js') }}"></script>
 
