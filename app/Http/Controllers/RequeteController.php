@@ -33,13 +33,14 @@ class RequeteController extends Controller
     {
         $request->validate([
             "tel"=> "required",
-            "type"=> "required",
+            "categorie_id"=> "required",
         ], [
             "tel.required" => "Veuillez entrer votre numéro de téléphone",
         ]);
+        $cat = Categorie::findOrFail($request->categorie_id);
         $newReq = new Requete();
         $newReq->tel_client = $request->tel;
-        $newReq->type = $request->type;
+        $newReq->type = $cat->name;
         $newReq->surface_min = $request->surface_min;
         $newReq->surface_max = $request->surface_max;
         $newReq->price_max = $request->price_max;
