@@ -17,11 +17,10 @@ return new class extends Migration
             $table->string('image_path')->nullable();
             $table->string('image1_path')->nullable();
             $table->string('image2_path')->nullable();
-            $table->integer('floor_number');
             $table->boolean('furnished');
             $table->integer('total_floors');
             $table->integer('surface');
-            $table->string('type');
+            $table->unsignedInteger('categorie_id');
             $table->boolean('is_public')->default(false);
             $table->unsignedInteger('owner_id');
             $table->timestamps();

@@ -18,7 +18,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            /* background-color: #004aad; Couleur de fond de l'en-tête */
+            
         }
         .logo {
             font-size: 1rem;
@@ -38,7 +38,7 @@
         .about.container {
             padding: 50px 20px;
             text-align: center;
-            background-color: #f5f5f5; /* Couleur de fond de la section */
+            background-color: #f5f5f5; 
         }
         .about-text h2 {
             font-size: 2.5em;

@@ -59,7 +59,7 @@
             <p class=""><strong>Description:</strong> {{ $property->description }}</p>
             <p class=""><strong>Prix:</strong> {{ number_format($property->price, 2) }} Fcfa</p>
             <p class=""><strong>Adresse:</strong> {{ $property->address }}</p>
-            <p class=""><strong>Numéro d'étage:</strong> {{ $property->floor_number }}</p>
+            {{-- <p class=""><strong>Numéro d'étage:</strong> {{ $property->floor_number }}</p> --}}
             <p class=""><strong>Meublé:</strong> {{ $property->furnished ? 'Oui' : 'Non' }}</p>
             <p class=""><strong>Nombre d'étages:</strong> {{ $property->total_floors }}</p>
             <p class=""><strong>Surface:</strong> {{ $property->surface }} m²</p>
@@ -81,7 +81,7 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-submit">Demander</button>
-                <a href="{{ route('properties.list') }}" class="btn btn-secondary">
+                <a href="{{ route('properties.list') }}" class="btn btn-secondary" >
                     <i class="fas fa-arrow-left"></i> Revenir à la liste des biens
                 </a>
             </div>

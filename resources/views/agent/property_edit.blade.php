@@ -2,6 +2,22 @@
 
 @section('content')
 
+
+@if(session('success'))
+    <div id="success-alert" class="alert alert-success d-flex align-items-center" role="alert" style="border: 1px solid #28a745; border-radius: 5px; background-color: #e9f7ef; padding: 10px;">
+        <i class="fas fa-check-circle" style="font-size: 24px; margin-right: 10px; color: #28a745;"></i>
+        <div>
+            {{ session('success') }}
+        </div>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            document.getElementById('success-alert').style.display = 'none';
+        }, 5000);
+    </script>
+@endif
+
 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
     <div>
         <h3 class="fw-bold mb-3">Modifier le bien {{ $property->title }}</h3>
@@ -63,13 +79,13 @@
                 @enderror
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="floor_number">Numéro d'étage:</label>
                 <input class="form-control" type="number" id="floor_number" name="floor_number" value="{{ $property->floor_number }}" placeholder="Numéro d'étage" required>
                 @error('floor_number')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label for="furnished">Meublé:</label>

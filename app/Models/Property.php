@@ -15,13 +15,12 @@ class Property extends Model
         'price',
         'address',
         'owner_id',
-        'floor_number',
+        // 'floor_number',
         'furnished',
         'is_public',
         'total_floors',
         'surface',
-        'type',
-        // 'label',
+        'categorie_id',
         'image_path',
         'image1_path',
         'image2_path',
@@ -29,5 +28,9 @@ class Property extends Model
 
     public function owner() {
         return $this->belongsTo(Owner::class);
+    }
+
+    public function categorie() {
+        return $this->belongsTo(Categorie::class);
     }
 }

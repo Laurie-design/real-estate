@@ -4,8 +4,9 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="index.html" class="logo">
-                <img src="{{ asset('assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand" height="20" />
+                <img src="{{ asset('assets/img/kaiadmin/img15.jpeg') }}" alt="navbar brand" class="navbar-brand" height="30" />
             </a>
+            <span class="logo-text">ImmoPlus</span> 
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
                     <i class="fas fa-bars"></i>
@@ -13,12 +14,12 @@
                 <button class="btn btn-toggle sidenav-toggler">
                     <i class="fas fa-arrow-left"></i> 
                 </button>
-            </div>
+            </div> 
             <button class="topbar-toggler more">
                 <i class="fas fa-ellipsis-v"></i> 
             </button>
         </div>
-        <!-- End Logo Header -->
+        
     </div>
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
@@ -56,35 +57,23 @@
                 </li>
 
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#requetes">
-                        <i class="fas fa-search"></i> <!-- Correction de l'icône ici -->
-                        <p>Requêtes</p>
+                    <a data-bs-toggle="collapse" href="#categories">
+                        <i class="fas fa-cube"></i>
+                        <p>Catégories biens</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="requetes">
+                    <div class="collapse" id="categories">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{ route('agent.requetes.list') }}">
-                                    <i class="fas fa-list"></i> <!-- Correction de l'icône ici -->
-                                    <p>Liste des requêtes</p>
+                                <a href="{{ route('agent.categorie.list') }}">
+                                    <i class="fas fa-list"></i>
+                                    <p>Liste des catégories</p>
                                 </a>
                             </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#demande">
-                        <i class="fas fa-file-alt"></i> <!-- Changement de l'icône ici -->
-                        <p>Demandes</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="demande">
-                        <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{ route('agent.demandes.list') }}">
-                                    <i class="fas fa-list"></i>
-                                    <p>Liste des demandes</p>
+                                <a href="{{ route('agent.categorie.create') }}">
+                                    <i class="fas fa-plus"></i>
+                                    <p>Nouvelle catégorie</p>
                                 </a>
                             </li>
                         </ul>
@@ -114,7 +103,43 @@
                         </ul>
                     </div>
                 </li>
-                
+
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#demande">
+                        <i class="fas fa-file-alt"></i> 
+                        <p>Demandes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="demande">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('agent.demandes.list') }}">
+                                    <i class="fas fa-list"></i>
+                                    <p>Liste des demandes</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#requetes">
+                        <i class="fas fa-search"></i> 
+                        <p>Requêtes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="requetes">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('agent.requetes.list') }}">
+                                    <i class="fas fa-list"></i> 
+                                    <p>Liste des requêtes</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                             
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#account">
                         <i class="fas fa-user"></i>
@@ -137,4 +162,19 @@
         </div>
     </div>
 </div>
-<!-- End Sidebar -->
+
+
+
+<style>
+.logo-header {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    margin-left: 10px; 
+    font-size: 16px; 
+    color: #ffffff; 
+    font-weight: bold; 
+}
+</style>

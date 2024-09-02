@@ -1,24 +1,29 @@
 @extends('layouts.agent.base')
 
 @section('content')
+
+@if(session('success'))
+    <div id="success-alert" class="alert alert-success d-flex align-items-center" role="alert" style="border: 1px solid #28a745; border-radius: 5px; background-color: #e9f7ef; padding: 10px; width: 50%; height: 50px; margin: 0 auto;">
+        <i class="fas fa-check-circle" style="font-size: 30px; margin-right: 15px; color: #28a745;"></i>
+        <div style="line-height: 30px;">
+            {{ session('success') }}
+        </div>
+    </div>
+@endif
+
     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
         <div>
             <h3 class="fw-bold mb-3">Liste des biens</h3>
             <h6 class="op-7 mb-2">Liste des biens enregistrés</h6>
         </div>
         <div class="ms-md-auto py-2 py-md-0">
-            {{-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> --}}
             <a href="{{ route('property.create') }}" class="btn btn-primary btn-round">Ajouter un bien</a>
         </div>
     </div>
 
     <div class="row">
-
         <div class="col-md-12">
             <div class="card">
-                {{-- <div class="card-header">
-                    <h4 class="card-title">Multi Filter Select</h4>
-                </div> --}}
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="multi-filter-select" class="display table table-striped table-hover">
@@ -49,16 +54,16 @@
                                         <td>{{ $property->is_public ? "Publique" : "Privée" }}</td>
                                         <td class="text-center">
                                             <div class="form-button-action">
-                                                <a href="{{ route('agent.property.show', ['id'=>$property->id]) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary dtable-ico-btn" data-original-title="Edit Task">
+                                                <a href="{{ route('agent.property.show', ['id'=>$property->id]) }}" type="button" data-bs-toggle="tooltip" title="Voir" class="btn btn-link btn-primary dtable-ico-btn">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('property.edit', ['id'=>$property->id]) }}" type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-warn dtable-ico-btn" data-original-title="Edit Task">
+                                                <a href="{{ route('property.edit', ['id'=>$property->id]) }}" type="button" data-bs-toggle="tooltip" title="Modifier" class="btn btn-link btn-warn dtable-ico-btn">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('property.destroy', ['id'=>$property->id]) }}" method="POST">
+                                                <form action="{{ route('property.destroy', ['id'=>$property->id]) }}" method="POST" style="display: inline-block;">
                                                     @csrf
                                                     @method("DELETE")
-                                                    <button type="submit" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger dtable-ico-btn" data-original-title="Edit Task">
+                                                    <button type="submit" data-bs-toggle="tooltip" title="Supprimer" class="btn btn-link btn-danger dtable-ico-btn">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </form>
@@ -72,14 +77,24 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
 
-
 @section('scripts')
     <script>
-        $(document).ready(function() {
+        document.addEventListener("DOMContentLoaded", function() {
+            var alertElement = document.getElementById('success-alert');
+            if (alertElement) {
+                setTimeout(function() {
+                    alertElement.style.transition = "opacity 1s ease";
+                    alertElement.style.opacity = "0";
+                    setTimeout(function() {
+                        alertElement.style.display = 'none';
+                    }, 1000); // Attend que l'animation soit terminée avant de masquer l'élément
+                }, 5000);
+            }
+
+            // Initialiser les DataTables
             $("#basic-datatables").DataTable({});
 
             $("#multi-filter-select").DataTable({
@@ -89,9 +104,7 @@
                         .columns()
                         .every(function() {
                             var column = this;
-                            var select = $(
-                                    '<select class="form-select"><option value=""></option></select>'
-                                )
+                            var select = $('<select class="form-select"><option value=""></option></select>')
                                 .appendTo($(column.footer()).empty())
                                 .on("change", function() {
                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
@@ -106,15 +119,13 @@
                                 .unique()
                                 .sort()
                                 .each(function(d, j) {
-                                    select.append(
-                                        '<option value="' + d + '">' + d + "</option>"
-                                    );
+                                    select.append('<option value="' + d + '">' + d + "</option>");
                                 });
                         });
                 },
             });
 
-            // Add Row
+            // Ajouter une nouvelle ligne
             $("#add-row").DataTable({
                 pageLength: 5,
             });

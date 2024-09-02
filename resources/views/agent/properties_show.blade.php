@@ -1,6 +1,16 @@
 @extends('layouts.agent.base')
 
 @section('content')
+
+{{-- @if(session('success'))
+    <div class="alert alert-success d-flex align-items-center" role="alert" style="border: 1px solid #28a745; border-radius: 5px; background-color: #e9f7ef; padding: 10px;">
+        <i class="fas fa-check-circle" style="font-size: 24px; margin-right: 10px; color: #28a745;"></i>
+        <div>
+            {{ session('success') }}
+        </div>
+    </div>
+@endif --}}
+
     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
         <div>
             <h3 class="fw-bold mb-3">{{ $property->title }}</h3>
@@ -9,6 +19,11 @@
         <div class="ms-md-auto py-2 py-md-0">
             {{-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> --}}
             <a href="{{ route('property.edit', ['id'=>$property->id]) }}" class="btn btn-primary btn-round">Modifier le bien</a>
+            <a href="{{ route('agent.property.list') }}" class="btn btn-primary btn-round" 
+             <i class="fas fa-arrow-left"></i> Revenir à la liste des biens
+         </a>
+         
+
         </div>
     </div>
 
@@ -75,20 +90,21 @@
                             </tr>
                             <tr>
                                 <td style="width: 40%; vertical-align: middle">
-                                    Num étage
-                                </td>
-                                <td>
-                                    {{ $property->floor_number }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40%; vertical-align: middle">
                                     Nombre d'étages
                                 </td>
                                 <td>
                                     {{ $property->total_floors }}
                                 </td>
                             </tr>
+                            {{-- <tr>
+                                <td style="width: 40%; vertical-align: middle">
+                                    Num étage
+                                </td>
+                                <td>
+                                    {{ $property->floor_number }}
+                                </td>
+                            </tr> --}}
+                            
                             <tr>
                                 <td style="width: 40%; vertical-align: middle">
                                     Appartement meublé

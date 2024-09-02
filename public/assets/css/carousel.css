@@ -12,6 +12,10 @@
     object-fit: cover;
     transform: translate(100%, 0);
     transition: transform 0.5s;
+    -webkit-transform: translate(100%, 0);
+    -moz-transform: translate(100%, 0);
+    -ms-transform: translate(100%, 0);
+    -o-transform: translate(100%, 0);
 }
 
 .carousel-inner > img.active {

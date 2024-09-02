@@ -63,13 +63,13 @@
                 @enderror
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="floor_number">Numéro d'étage:</label>
                 <input class="form-control" type="number" id="floor_number" name="floor_number" value="{{ old('floor_number') }}" placeholder="Numéro d'étage" required>
                 @error('floor_number')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label for="furnished">Meublé:</label>
@@ -107,14 +107,14 @@
             </div>
 
             <div class="form-group">
-                <label for="type">Type de bien:</label>
-                <select class="form-select" id="type" name="type" required>
-                    <option value="Appartement" {{ old('type') == 'Appartement' ? 'selected' : '' }}>Appartement</option>
-                    <option value="Maison" {{ old('type') == 'Maison' ? 'selected' : '' }}>Maison</option>
-                    <option value="Villa" {{ old('type') == 'Villa' ? 'selected' : '' }}>Villa</option>
-                    <option value="Studio" {{ old('type') == 'Studio' ? 'selected' : '' }}>Studio</option>
+                <label for="categorie_id">Type</label>
+                <select name="categorie_id" id="categorie_id" class="form-control" required>
+                    <option value="">--</option>
+                    @foreach ($categories as $categorie)
+                        <option value="{{ $categorie->id }}" @if(old('categorie_id')==$categorie->id) selected @endif>{{ $categorie->name }}</option>
+                    @endforeach
                 </select>
-                @error('type')
+                @error('categorie_id')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>

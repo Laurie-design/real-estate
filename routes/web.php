@@ -12,6 +12,7 @@ use App\Http\Controllers\DemandeController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RequeteController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\CategorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,12 @@ Route::middleware('auth')->group(function () {
     Route::get('agent/owner/list', [OwnerController::class, 'index'])->name('agent.owner.list');
     Route::get('agent/owner/create', [OwnerController::class, 'create'])->name('agent.owner.create');
     Route::post('agent/owner/store', [OwnerController::class, 'store'])->name('agent.owner.store');
+
+    // Categories
+
+    Route::get('agent/categorie/list', [CategorieController::class, 'index'])->name('agent.categorie.list');
+    Route::get('agent/categorie/create', [CategorieController::class, 'create'])->name('agent.categorie.create');
+    Route::post('agent/categorie/store', [CategorieController::class, 'store'])->name('agent.categorie.store');
 
     // Properties
 

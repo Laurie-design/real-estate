@@ -28,7 +28,7 @@ class PropertyFactory extends Factory
             'furnished' => false,
             'total_floors' => rand(6, 7),
             'surface' => fake()->numberBetween(10, 500),
-            'type' => "maison",
+            'categorie_id' => 1,
             'is_public' => [true, false][rand(0,1)],
         ];
     }

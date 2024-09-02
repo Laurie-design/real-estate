@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\Categorie;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
+
 
 class PropertyController extends Controller
 {
@@ -46,8 +48,12 @@ class PropertyController extends Controller
 
     public function create() {
         $owners = Owner::all();
-        return view('agent.property_new', compact('owners'));
+        $categories = Categorie::all();
+        return view('agent.property_new', compact('owners','categories') );
     }
+       
+
+         
 
     public function store(Request $request) {
         $validatedData = $request->validate([
@@ -56,12 +62,10 @@ class PropertyController extends Controller
             'price' => 'required|numeric',
             'address' => 'required|string',
             'owner_id' => 'required',
-            'floor_number' => 'required|integer',
             'furnished' => 'required|boolean',
             'total_floors' => 'required|integer',
             'surface' => 'required|integer',
-            // 'label' => 'required|string|max:255',
-            'type' => 'required|string|max:50',
+            'categorie_id' => 'required|string|max:50',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -94,13 +98,11 @@ class PropertyController extends Controller
             'price' => $request->price,
             'address' => $request->address,
             'owner_id' => $request->owner_id,
-            'floor_number' => $request->floor_number,
             'furnished' => $request->furnished,
             'is_public' => $request->input('is_public', false) ? 1 : 0,
             'total_floors' => $request->total_floors,
             'surface' => $request->surface,
-            // 'label' => $request->label,
-            'type' => $request->type,
+            'categorie_id' => $request->categorie_id,
             'image_path' => $imageName,
             'image1_path' => $image1Name,
             'image2_path' => $image2Name,
@@ -124,12 +126,10 @@ class PropertyController extends Controller
             'price' => 'required|numeric',
             'address' => 'required|string|max:255',
             'owner_id' => 'required',
-            'floor_number' => 'required|integer',
             'furnished' => 'required|boolean',
             'total_floors' => 'required|integer',
             'surface' => 'required|integer',
-            'type' => 'required|string|max:255',
-            // 'label' => 'required|string|max:255',
+            'categorie_id' => 'required|string|max:255',
             'image' => 'nullable|image|max:2048',
         ]);
 
@@ -153,10 +153,11 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         $property = Property::findOrFail($id);
-
         $property->delete();
-        return redirect()->back()->with('success','Bien supprimé avec succès');
+    
+        return redirect()->route('agent.property.list')->with('success', 'Bien supprimé avec succès.');
     }
+    
 
 
     public function showAllProperties()

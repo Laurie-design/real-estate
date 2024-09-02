@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Demande;
 use App\Models\Owner;
 use App\Models\Property;
@@ -15,8 +16,9 @@ class AgentController extends Controller
     {
         $nOwners = Owner::count();
         $nProperties = Property::count();
+        $nCategories  = Categorie::count();
         $nRequest = Requete::count();
         $nDemandes = Demande::count();
-        return view('agent.dashboard', compact('nOwners', 'nProperties', 'nRequest', 'nDemandes'));
+        return view('agent.dashboard', compact('nOwners', 'nProperties', 'nRequest', 'nDemandes','nCategories'));
     }
 }
