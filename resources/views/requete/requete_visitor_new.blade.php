@@ -73,34 +73,38 @@
             <button type="submit" class="btn btn-primary my-2 ml-auto">Envoyer la requete</button>
           </form>
     </section>
-
     <section class="footer">
-        <div class="footer-container container">
-            <h2>Real State</h2>
-            <div class="footer-box">
-                <h3>Quick Links</h3>
-                <a href="#">Agency</a>
-                <a href="#">Building</a>
-                <a href="#">Rates</a>
-            </div>
-            <div class="footer-box">
-                <h3>Locations</h3>
-                <a href="#">Birmingham</a>
-                <a href="#">London</a>
-                <a href="#">New York</a>
-            </div>
-            <div class="footer-box">
-                <h3>Contact</h3>
-                <a href="#">+44 (0) 800 123 4567</a>
-                <a href="#">yourmail@gmail.com</a>
-                <div class="social">
-                    <a href="#"><i class='bx bxl-facebook'></i></a>
-                    <a href="#"><i class='bx bxl-twitter'></i></a>
-                    <a href="#"><i class='bx bxl-instagram'></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="footer-container container">
+          <h2>ImmoPlus</h2>
+          <div class="footer-box">
+              <h3>Liens rapides</h3>
+              <a href="#">Agence</a>
+              <a href="#">Bâtiment</a>
+              <a href="#">Tarifs</a>
+          </div>
+          <div class="footer-box">
+              <h3>Emplacements</h3>
+              <a href="#">Lomé</a>
+              <a href="#">Sokodé</a>
+              <a href="#">Kara</a>
+          </div>
+          
+          <div class="footer-box">
+              <h3>Contact</h3>
+              <a href="#">+228 93 25 46 12</a>
+              <a href="#">votremail@gmail.com</a>
+              <div class="social">
+                  <a href="#"><i class='bx bxl-facebook'></i></a>
+                  <a href="#"><i class='bx bxl-twitter'></i></a>
+                  <a href="#"><i class='bx bxl-instagram'></i></a>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <div class="copyright">
+      <p>&#169; CarpoolVenam Tous droits réservés</p>
+  </div>
 
     <script src="{{ URL::asset('assets/js/carousel.js') }}"></script>
 
