@@ -28,7 +28,7 @@
         </div>
     </header>
 
-    
+
     <section id="search-form" class="container">
         <h2 class="pt-5 pb-3 mx-4">Envoyer une requête</h2>
         <form action="{{ route('requete.store') }}" method="GET" class="col-12 col-md-6 mx-2">
@@ -40,12 +40,11 @@
                 </div>
               <div class="form-group">
                 <label for="">Type de bien</label>
-                <select name="type" id="" class="form-control">
+                <select name="categorie_id" id="" class="form-control">
                     <option value=""></option>
-                    <option value="maison" {{ (isset($input['type']) && $input['type']=='maison') ? 'selected' : '' }}>Maison</option>
-                    <option value="appartement" {{ isset($input['type']) && $input['type']=='appartement' ? 'selected' : '' }}>Appartement</option>
-                    <option value="studio" {{ isset($input['type']) && $input['type']=='studio' ? 'selected' : '' }}>Studio</option>
-                    <option value="villa" {{ isset($input['type']) && $input['type']=='villa' ? 'selected' : '' }}>Villa</option>
+                    @foreach ($categories as $cat)
+                        <option value="{{ $cat->id }}" {{ (isset($input['categorie_id']) && $input['categorie_id']==$cat->id) ? 'selected' : '' }}>{{ $cat->name }}</option>
+                    @endforeach
                 </select>
               </div>
               <div class="form-group">

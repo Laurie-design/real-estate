@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Requete;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class RequeteController extends Controller
      */
     public function create(Request $request)
     {
-        return view("requete.requete_visitor_new")->with("input",$request->all());
+        $categories = Categorie::all();
+        return view("requete.requete_visitor_new", compact('categories'))->with("input",$request->all());
     }
 
     /**
