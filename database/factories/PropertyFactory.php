@@ -24,7 +24,6 @@ class PropertyFactory extends Factory
             'image_path' => ['1723779937.jpg', '1723780062.jpg'][rand(0, 1)],
             'image1_path' => ['JiHrecqJZd4IR73.jpg', 'ywEmP8u9UfGvX8D.jpg'][rand(0, 1)],
             'owner_id' => 1,
-            'floor_number' => rand(2, 3),
             'furnished' => false,
             'total_floors' => rand(6, 7),
             'surface' => fake()->numberBetween(10, 500),

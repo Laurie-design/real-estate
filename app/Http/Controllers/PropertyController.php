@@ -14,19 +14,20 @@ class PropertyController extends Controller
 {
     public function index(Request $request) {
         $searchTerms = explode(" ", $request->input("search"));
-        $type = $request->input("type");
+        $categorie_id = $request->input("categorie_id");
         $price_min = $request->input("price_min");
         $price_max = $request->input("price_max");
         $surface_min = $request->input("surface_min");
         $surface_max = $request->input("surface_max");
         $searchRequest = $this->searchPropertiesByTerms($searchTerms, null);
-        $searchRequest = $type ? $this->searchPropertiesByType($type, $searchRequest) : $searchRequest;
+        $searchRequest = $categorie_id ? $this->searchPropertiesByCategory($categorie_id, $searchRequest) : $searchRequest;
         $searchRequest = $this->searchPropertiesByPrice($price_min, $price_max, $searchRequest);
         $searchRequest = $this->searchPropertiesBySurface($surface_min, $surface_max, $searchRequest);
         // dd($searchRequest, $searchRequest->get());
         $searchRequest = $searchRequest ? $searchRequest->where('is_public', true) : Property::where('is_public', true);
         $properties = $searchRequest->get();
-        return view("properties.properties_visitor_list", compact('properties'))->with('input',request()->all());
+        $categories = Categorie::all();
+        return view("properties.properties_visitor_list", compact('properties', 'categories'))->with('input',request()->all());
     }
 
     public function indexAgent(Request $request) {
@@ -51,9 +52,9 @@ class PropertyController extends Controller
         $categories = Categorie::all();
         return view('agent.property_new', compact('owners','categories') );
     }
-       
 
-         
+
+
 
     public function store(Request $request) {
         $validatedData = $request->validate([
@@ -70,7 +71,7 @@ class PropertyController extends Controller
             'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
+
         try {
             $imageName = null;
             $image1Name = null;
@@ -87,7 +88,7 @@ class PropertyController extends Controller
                 $image2Name = Str::random(15) . '.' . $request->image2->extension();
                 $request->image2->move(public_path('storage'), $image2Name);
             }
-            
+
         } catch (\Exception $e) {
             return redirect()->back('agent.property.list')->with('success','Propriété ajoutée avec succès!');
         }
@@ -154,10 +155,10 @@ class PropertyController extends Controller
     {
         $property = Property::findOrFail($id);
         $property->delete();
-    
+
         return redirect()->route('agent.property.list')->with('success', 'Bien supprimé avec succès.');
     }
-    
+
 
 
     public function showAllProperties()
@@ -179,8 +180,8 @@ class PropertyController extends Controller
         return $searchRequest;
     }
 
-    private function searchPropertiesByType(String $type, $searchRequest=null) {
-        return $searchRequest ? $searchRequest->where('type', $type) : Property::where('type', $type);
+    private function searchPropertiesByCategory($categorie_id, $searchRequest=null) {
+        return $searchRequest ? $searchRequest->where('categorie_id', $categorie_id) : Property::where('categorie_id', $categorie_id);
     }
 
     private function searchPropertiesByPrice($min, $max, $searchRequest=null) {

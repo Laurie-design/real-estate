@@ -30,18 +30,17 @@
     <section id="search-form" class="">
         <form action="" method="GET">
             <div class="form-row">
-              <div class="col-6">
+              {{-- <div class="col-6">
                 <label for="">Que recherchez vous?</label>
                 <input type="text" class="form-control" name="search" placeholder="" value="{{ isset($input['search']) ? $input['search'] :'' }}">
-              </div>
-              <div class="col-6">
+              </div> --}}
+              <div class="col-12 col-md-3">
                 <label for="">Type de bien</label>
-                <select name="type" id="" class="form-control">
+                <select name="categorie_id" id="" class="form-control">
                     <option value=""></option>
-                    <option value="maison" {{ (isset($input['type']) && $input['type']=='maison') ? 'selected' : '' }}>Maison</option>
-                    <option value="appartement" {{ isset($input['type']) && $input['type']=='appartement' ? 'selected' : '' }}>Appartement</option>
-                    <option value="studio" {{ isset($input['type']) && $input['type']=='studio' ? 'selected' : '' }}>Studio</option>
-                    <option value="villa" {{ isset($input['type']) && $input['type']=='villa' ? 'selected' : '' }}>Villa</option>
+                    @foreach ($categories as $cat)
+                        <option value="{{ $cat->id }}" {{ (isset($input['categorie_id']) && $input['categorie_id']==$cat->id) ? 'selected' : '' }}>{{ $cat->name }}</option>
+                    @endforeach
                 </select>
               </div>
               <div class="col">
@@ -69,19 +68,21 @@
     <section class="properties-container">
         {{-- <h1>Liste des Propriétés</h1> --}}
         @if ($properties->isEmpty())
-            <p>
-                Aucune propriété disponible. <br>
-                <a href="{{ route('requete.create', [
-                    'search'=>isset($input['search']) ? $input['search'] :'',
-                    'type'=>isset($input['type']) ? $input['type'] :'',
-                    'price_min'=>isset($input['price_min']) ? $input['price_min'] :'',
-                    'price_max'=>isset($input['price_max']) ? $input['price_max'] :'',
-                    'surface_min'=>isset($input['surface_min']) ? $input['surface_min'] :'',
-                    'surface_max'=>isset($input['surface_max']) ? $input['surface_max'] :'',
-                ]) }}">
-                    Envoyer une requête
-                </a>
-            </p>
+            <div>
+                <p>Aucune propriété disponible.</p>
+                <p class="text-center">
+                    <a href="{{ route('requete.create', [
+                        'search'=>isset($input['search']) ? $input['search'] :'',
+                        'type'=>isset($input['type']) ? $input['type'] :'',
+                        'price_min'=>isset($input['price_min']) ? $input['price_min'] :'',
+                        'price_max'=>isset($input['price_max']) ? $input['price_max'] :'',
+                        'surface_min'=>isset($input['surface_min']) ? $input['surface_min'] :'',
+                        'surface_max'=>isset($input['surface_max']) ? $input['surface_max'] :'',
+                    ]) }}" class="btn btn-success text-success-emphasis">
+                        Envoyer une requête
+                    </a>
+                </p>
+            </div>
         @else
             @foreach ($properties as $property)
                 <div class="property-item">
@@ -92,7 +93,7 @@
                                 <img class="" src="{{ asset('storage/' . $property->image1_path) }}" alt="Second slide">
                             @endif
                             @if ($property->image2_path)
-                                <img class="" src="{{ asset('storage/' . $property->image2_path) }}" alt="Third slide">  
+                                <img class="" src="{{ asset('storage/' . $property->image2_path) }}" alt="Third slide">
                             @endif
                         </div>
                     </div>
@@ -125,7 +126,7 @@
                     <a href="#">Sokodé</a>
                     <a href="#">Kara</a>
                 </div>
-                
+
                 <div class="footer-box">
                     <h3>Contact</h3>
                     <a href="#">+228 93 25 46 12</a>
@@ -138,7 +139,7 @@
                 </div>
             </div>
         </section>
-    
+
         <div class="copyright">
             <p>&#169; CarpoolVenam Tous droits réservés</p>
         </div> --}}
