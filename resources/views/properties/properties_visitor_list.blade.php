@@ -73,7 +73,7 @@
                 <p class="text-center">
                     <a href="{{ route('requete.create', [
                         'search'=>isset($input['search']) ? $input['search'] :'',
-                        'type'=>isset($input['type']) ? $input['type'] :'',
+                        'categorie_id'=>isset($input['categorie_id']) ? $input['categorie_id'] :'',
                         'price_min'=>isset($input['price_min']) ? $input['price_min'] :'',
                         'price_max'=>isset($input['price_max']) ? $input['price_max'] :'',
                         'surface_min'=>isset($input['surface_min']) ? $input['surface_min'] :'',
