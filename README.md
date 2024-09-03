@@ -47,18 +47,8 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
 Pour lancer le serveur de développement, utilisez la commande:
     `php artisan serve`
 
-## Tests
-Pour exécuter les tests (si le projet en contient), utilisez la commande :
-    `php artisan test`
-
 ## Déploiement
 Pour déployer cette application en production, assurez-vous de configurer correctement votre environnement de production, y compris la configuration du fichier .env, l'installation des dépendances, et l'exécution des migrations de la base de données.
-
-## Contributions
-Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce projet, veuillez créer un fork du dépôt, créer une nouvelle branche, apporter vos modifications, et soumettre une pull request.
-
-## Licence
-Ce projet est sous licence MIT. Vous êtes libre de l'utiliser et de le modifier comme vous le souhaitez.
 
 ## Auteur
 MARDJA Liguili
