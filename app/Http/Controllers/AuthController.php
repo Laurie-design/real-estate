@@ -7,24 +7,23 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function createUser(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+    public function profil(Request $request) {
+        $user = Auth::user();
+        return view("auth.profil", compact("user"));
+    }
+
+    public function update(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,id',
         ]);
-
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']),
-            'role' => 'agent', // ou 'admin'
-        ]);
-
-        // Connexion automatique après l'inscription
-        Auth::login($user);
-
-        return redirect()->route('home'); // Redirection après la création de l'utilisateur
+        $user = User::findOrFail(Auth::user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->district1 = $request->district1;
+        $user->district2 = $request->district2;
+        $user->district3 = $request->district3;
+        $user->save();
+        return redirect()->back();
     }
 }

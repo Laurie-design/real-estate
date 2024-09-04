@@ -5,8 +5,8 @@ use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DemandeController;
 use App\Http\Controllers\PropertyController;
@@ -34,8 +34,10 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/agent', [AgentController::class, 'index'])->name('agent.dashboard');
+    Route::get('/agent/profile', [AuthController::class, 'profil'])->name('agent.profil');
+    Route::get('/agent/profile/update', [AuthController::class, 'update'])->name('agent.profil.update');
 
-    Route::get('agent/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::get('agent/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('agent/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('agent/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 

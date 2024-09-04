@@ -149,7 +149,7 @@
                     <div class="collapse" id="account">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="#"><span class="sub-item">Profil</span></a>
+                                <a href="{{ route('agent.profil') }}"><span class="sub-item">Profil</span></a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"><span class="sub-item">Se déconnecter</span></a>
