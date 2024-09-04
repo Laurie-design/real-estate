@@ -73,13 +73,6 @@
             @foreach($properties as $property)
             <div class="box">
                 <img src="{{ asset('storage/' . $property->image_path) }}" alt="{{ $property->title }}">
-                <h3>${{ number_format($property->price, 2) }}</h3>
-                <div class="content">
-                    <div class="text">
-                        <h3>{{ $property->title }}</h3>
-                        <p>{{ $property->address }}</p>
-                    </div>
-                </div>
             </div>
             @endforeach
         </div>

@@ -51,7 +51,7 @@
             </div>
 
             <div class="form-group">
-                <label for="price">Prix (€):</label>
+                <label for="price">Prix :</label>
                 <input class="form-control" type="number" id="price" name="price" value="{{ $property->price }}" placeholder="Prix" required>
                 @error('price')
                     <div style="color: red;">{{ $message }}</div>

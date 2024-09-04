@@ -45,6 +45,10 @@
     margin-bottom: 10px;
 }
 
+.property-info .description {
+    font-weight: bold;
+}
+
 .property-info .info-p {
     margin: 0;
 }

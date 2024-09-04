@@ -78,7 +78,7 @@
                         'price_max'=>isset($input['price_max']) ? $input['price_max'] :'',
                         'surface_min'=>isset($input['surface_min']) ? $input['surface_min'] :'',
                         'surface_max'=>isset($input['surface_max']) ? $input['surface_max'] :'',
-                    ]) }}" class="btn btn-success text-success-emphasis">
+                    ]) }}" class="btn btn-success text-success-emphasis px-5">
                         Envoyer une requête
                     </a>
                 </p>
@@ -99,10 +99,10 @@
                     </div>
                     {{-- <img src="{{ asset('storage/' . $property->image_path) }}" alt="Image du Bien"> --}}
                     <div class="property-info">
-                        <h2><a href="{{ route('property.show', $property->id) }}">{{ $property->title }}</a></h2>
+                        {{-- <h2><a href="{{ route('property.show', $property->id) }}">{{ $property->title }}</a></h2> --}}
                         <p class="info-p description">{{ $property->description }}</p>
-                        <p class="info-p address"> {{ $property->address }}</p>
-                        <p class="info-p surface"> {{ $property->surface }} m²</p>
+                        <p class="info-p address"> <i class='bx bxs-been-here'></i> {{ $property->address }}</p>
+                        <p class="info-p surface"> <i class='bx bx-area'></i> {{ $property->surface }} m²</p>
                         <div class="action-group">
                             <a href="{{ route('property.show', ['id'=>$property->id]) }}" class="btn btn-primary">Voir</a>
                             <p class="info-p price">{{ number_format($property->price, 2) }} Fcfa</p>

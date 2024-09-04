@@ -55,8 +55,8 @@
         </div>
 
         <div class="property-details">
-            <h2>{{ $property->title }}</h2>
-            <p class=""><strong>Description:</strong> {{ $property->description }}</p>
+            {{-- <h2>{{ $property->title }}</h2> --}}
+            <p class="text-bold"><strong>Description:</strong> {{ $property->description }}</p>
             <p class=""><strong>Prix:</strong> {{ number_format($property->price, 2) }} Fcfa</p>
             <p class=""><strong>Adresse:</strong> {{ $property->address }}</p>
             {{-- <p class=""><strong>Numéro d'étage:</strong> {{ $property->floor_number }}</p> --}}
