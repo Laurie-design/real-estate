@@ -22,14 +22,16 @@
                                 <tr>
                                     <th>Nom</th>
                                     <th>Description</th>
-                                   
+                                    <th>N. biens</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>Nom</th>
                                     <th>Description</th>
-                                    
+                                    <th>N. biens</th>
+                                    <th>Actions</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -37,7 +39,21 @@
                                     <tr>
                                         <td>{{ $categorie->name }}</td>
                                         <td>{{ $categorie->description }}</td>
-                                        
+                                        <td>{{ $categorie->properties->count() }}</td>
+                                        <td class="text-center">
+                                            <div class="form-button-action">
+                                                <a href="{{ route('agent.categorie.edit', ['id'=>$categorie->id]) }}" type="button" data-bs-toggle="tooltip" title="Modifier" class="btn btn-link btn-warn dtable-ico-btn">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <form action="{{ route('agent.categorie.destroy', ['id'=>$categorie->id]) }}" method="POST" style="display: inline-block;">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit" data-bs-toggle="tooltip" title="Supprimer" class="btn btn-link btn-danger dtable-ico-btn">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

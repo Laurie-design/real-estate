@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedInteger('categorie_id');
             $table->boolean('is_public')->default(false);
             $table->unsignedInteger('owner_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

@@ -23,6 +23,8 @@
                                     <th>Nom</th>
                                     <th>Email</th>
                                     <th>Tel</th>
+                                    <th>N. biens</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -30,6 +32,8 @@
                                     <th>Nom</th>
                                     <th>Email</th>
                                     <th>Tel</th>
+                                    <th>N. biens</th>
+                                    <th>Actions</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -38,6 +42,21 @@
                                         <td>{{ $owner->name }}</td>
                                         <td>{{ $owner->email }}</td>
                                         <td>{{ $owner->tel }}</td>
+                                        <td>{{ $owner->properties->count() }}</td>
+                                        <td class="text-center">
+                                            <div class="form-button-action">
+                                                <a href="{{ route('agent.owner.edit', ['id'=>$owner->id]) }}" type="button" data-bs-toggle="tooltip" title="Modifier" class="btn btn-link btn-warn dtable-ico-btn">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <form action="{{ route('agent.owner.destroy', ['id'=>$owner->id]) }}" method="POST" style="display: inline-block;">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit" data-bs-toggle="tooltip" title="Supprimer" class="btn btn-link btn-danger dtable-ico-btn">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

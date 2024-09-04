@@ -101,7 +101,7 @@
             <div class="form-group">
                 <label for="is_public">Public</label>
                 <input type="checkbox" name="is_public" id="is_public" {{ $property->is_public == '1' ? 'checked' : '' }}>
-                @error('furnished')
+                @error('is_public')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
@@ -123,14 +123,14 @@
             </div>
 
             <div class="form-group">
-                <label for="type">Type de bien:</label>
-                <select class="form-select" id="type" name="type" required>
-                    <option value="Appartement" {{ $property->type == 'Appartement' ? 'selected' : '' }}>Appartement</option>
-                    <option value="Maison" {{ $property->type == 'Maison' ? 'selected' : '' }}>Maison</option>
-                    <option value="Villa" {{ $property->type == 'Villa' ? 'selected' : '' }}>Villa</option>
-                    <option value="Studio" {{ $property->type == 'Studio' ? 'selected' : '' }}>Studio</option>
+                <label for="categorie_id">Type de bien:</label>
+                <select name="categorie_id" id="categorie_id" class="form-control" required>
+                    <option value="">--</option>
+                    @foreach ($categories as $categorie)
+                        <option value="{{ $categorie->id }}" @if($property->categorie_id==$categorie->id) selected @endif>{{ $categorie->name }}</option>
+                    @endforeach
                 </select>
-                @error('type')
+                @error('categorie_id')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
@@ -151,5 +151,5 @@
         </form>
     </div>
 </div>
-    
+
 @endsection

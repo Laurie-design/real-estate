@@ -39,22 +39,30 @@ Route::middleware('auth')->group(function () {
     Route::patch('agent/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('agent/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    
+
     Route::get('agent/requetes/list', [RequeteController::class, 'index'])->name('agent.requetes.list');
-    
+    Route::delete('agent/requetes/destroy/{id}', [RequeteController::class, 'destroy'])->name('agent.requetes.destroy');
+
     Route::get('agent/demandes/list', [DemandeController::class, 'index'])->name('agent.demandes.list');
+    Route::delete('agent/demandes/destroy/{id}', [DemandeController::class, 'destroy'])->name('agent.demandes.destroy');
 
     // Owners
 
     Route::get('agent/owner/list', [OwnerController::class, 'index'])->name('agent.owner.list');
     Route::get('agent/owner/create', [OwnerController::class, 'create'])->name('agent.owner.create');
     Route::post('agent/owner/store', [OwnerController::class, 'store'])->name('agent.owner.store');
+    Route::get('agent/owner/edit/{id}', [OwnerController::class, 'edit'])->name('agent.owner.edit');
+    Route::post('agent/owner/update/{id}', [OwnerController::class, 'update'])->name('agent.owner.update');
+    Route::delete('agent/owner/destroy/{id}', [OwnerController::class, 'destroy'])->name('agent.owner.destroy');
 
     // Categories
 
     Route::get('agent/categorie/list', [CategorieController::class, 'index'])->name('agent.categorie.list');
     Route::get('agent/categorie/create', [CategorieController::class, 'create'])->name('agent.categorie.create');
     Route::post('agent/categorie/store', [CategorieController::class, 'store'])->name('agent.categorie.store');
+    Route::get('agent/categorie/edit/{id}', [CategorieController::class, 'edit'])->name('agent.categorie.edit');
+    Route::post('agent/categorie/update/{id}', [CategorieController::class, 'update'])->name('agent.categorie.update');
+    Route::delete('agent/categorie/destroy/{id}', [CategorieController::class, 'destroy'])->name('agent.categorie.destroy');
 
     // Properties
 

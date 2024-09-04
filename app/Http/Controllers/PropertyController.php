@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Categorie;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 
@@ -31,7 +32,7 @@ class PropertyController extends Controller
     }
 
     public function indexAgent(Request $request) {
-        $properties = Property::all();
+        $properties = Auth::user()->properties;
         return view('agent.properties_list', compact('properties'));
     }
 
@@ -116,7 +117,8 @@ class PropertyController extends Controller
     {
         $property = Property::findOrFail($id);
         $owners = Owner::all();
-        return view('agent.property_edit', compact('property', 'owners'));
+        $categories = Categorie::all();
+        return view('agent.property_edit', compact('property', 'owners', 'categories'));
     }
 
     public function update(Request $request, $id)

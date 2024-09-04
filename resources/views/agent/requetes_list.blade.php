@@ -26,6 +26,7 @@
                                     <th>Surface max.</th>
                                     <th>Description</th>
                                     <th>Tel. client</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -36,6 +37,7 @@
                                     <th>Surface max.</th>
                                     <th>Description</th>
                                     <th>Tel. client</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -47,6 +49,17 @@
                                         <td>{{ $req->surface_max }}</td>
                                         <td>{{ $req->description }}</td>
                                         <td>{{ $req->tel_client }}</td>
+                                        <td class="text-center">
+                                            <div class="form-button-action">
+                                                <form action="{{ route('agent.requetes.destroy', ['id'=>$req->id]) }}" method="POST" style="display: inline-block;">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit" data-bs-toggle="tooltip" title="Supprimer" class="btn btn-link btn-danger dtable-ico-btn">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

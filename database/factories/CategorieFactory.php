@@ -18,7 +18,8 @@ class CategorieFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'description' => fake()->sentence()
+            'description' => fake()->sentence(),
+            'user_id' => [1, 2][rand(0, 1)],
         ];
     }
 }
