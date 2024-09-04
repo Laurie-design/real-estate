@@ -19,7 +19,8 @@ class OwnerFactory extends Factory
         return [
             'name' => fake()->name,
             'email' => fake()->email,
-            'tel' => fake()->phoneNumber()
+            'tel' => fake()->phoneNumber(),
+            'user_id' => [1, 2][rand(0, 1)],
         ];
     }
 }

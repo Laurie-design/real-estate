@@ -41,35 +41,10 @@ class DemandeController extends Controller
         return redirect()->route('properties.list')->with('success',"Demande enregistrée");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Demande $demande)
+    public function destroy(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Demande $demande)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Demande $demande)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Demande $demande)
-    {
-        //
+        $dem = Demande::findOrFail($id);
+        $dem->delete();
+        return redirect()->route('agent.demandes.list');
     }
 }

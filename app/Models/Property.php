@@ -33,4 +33,8 @@ class Property extends Model
     public function categorie() {
         return $this->belongsTo(Categorie::class);
     }
+
+    public function agent() {
+        return $this->belongsTo(User::class);
+    }
 }

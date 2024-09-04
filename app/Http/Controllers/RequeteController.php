@@ -49,35 +49,11 @@ class RequeteController extends Controller
         return redirect()->route("properties.list")->with("success","Votre requête a été envoyée avec succès");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Requete $requete)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Requete $requete)
+    public function destroy(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Requete $requete)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Requete $requete)
-    {
-        //
+        $req = Requete::findOrFail($id);
+        $req->delete();
+        return redirect()->route('agent.requetes.list');
     }
 }

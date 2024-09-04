@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('tel');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }
