@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategorieController extends Controller
 {
     public function index() {
-        $categories = Categorie::all();
+        $categories = Auth::user()->categories;
         return view("agent.categorie_list", compact("categories"));
     }
 
@@ -19,11 +20,11 @@ class CategorieController extends Controller
         $request->validate([
             "name"=> "required",
             "description"=> "required",
-
         ]);
         $newCategorie = new Categorie();
         $newCategorie->name = $request->name;
         $newCategorie->description = $request->description;
+        $newCategorie->user_id = Auth::user()->id;
         $newCategorie->save();
         return redirect()->route("agent.categorie.list")->with("success","Catégorie créé avec succès.");
     }

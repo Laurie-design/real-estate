@@ -49,8 +49,8 @@ class PropertyController extends Controller
 
 
     public function create() {
-        $owners = Owner::all();
-        $categories = Categorie::all();
+        $owners = Auth::user()->owners;
+        $categories = Auth::user()->categories;
         return view('agent.property_new', compact('owners','categories') );
     }
 
@@ -71,6 +71,7 @@ class PropertyController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'user_id' => 'required',
         ]);
 
         try {
@@ -108,6 +109,7 @@ class PropertyController extends Controller
             'image_path' => $imageName,
             'image1_path' => $image1Name,
             'image2_path' => $image2Name,
+            'user_id' => $request->user_id,
         ]);
 
         return redirect()->route('agent.property.list')->with('success','Propriété ajoutée avec succès!');

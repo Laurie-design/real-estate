@@ -26,6 +26,7 @@
                                     <th>Surface max.</th>
                                     <th>Description</th>
                                     <th>Tel. client</th>
+                                    <th>Quartier</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -37,6 +38,7 @@
                                     <th>Surface max.</th>
                                     <th>Description</th>
                                     <th>Tel. client</th>
+                                    <th>Quartier</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
@@ -49,6 +51,7 @@
                                         <td>{{ $req->surface_max }}</td>
                                         <td>{{ $req->description }}</td>
                                         <td>{{ $req->tel_client }}</td>
+                                        <td>{{ $req->district }}</td>
                                         <td class="text-center">
                                             <div class="form-button-action">
                                                 <form action="{{ route('agent.requetes.destroy', ['id'=>$req->id]) }}" method="POST" style="display: inline-block;">

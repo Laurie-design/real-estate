@@ -19,9 +19,9 @@
         <div class="ms-md-auto py-2 py-md-0">
             {{-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> --}}
             <a href="{{ route('property.edit', ['id'=>$property->id]) }}" class="btn btn-primary btn-round">Modifier le bien</a>
-            <a href="{{ route('agent.property.list') }}" class="btn btn-primary btn-round" 
+            <a href="{{ route('agent.property.list') }}" class="btn btn-primary btn-round" >
              <i class="fas fa-arrow-left"></i> Revenir à la liste des biens
-         </a>
+            </a>
          
 
         </div>
@@ -135,7 +135,7 @@
                                     Type
                                 </td>
                                 <td>
-                                    {{ $property->type }}
+                                    {{ $property->categorie->name }}
                                 </td>
                             </tr>
                         </tbody>

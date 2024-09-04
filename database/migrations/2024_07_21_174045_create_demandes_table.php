@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('tel_client');
             $table->unsignedInteger('property_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

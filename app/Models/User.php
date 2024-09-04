@@ -36,4 +36,12 @@ class User extends Authenticatable
     public function owners() : HasMany {
         return $this->hasMany(Owner::class);
     }
+
+    public function categories() : HasMany {
+        return $this->hasMany(Categorie::class);
+    }
+
+    public function demandes() : HasMany {
+        return $this->hasMany(Demande::class);
+    }
 }

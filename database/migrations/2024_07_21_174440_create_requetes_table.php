@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('requetes', function (Blueprint $table) {
             $table->id();
+            $table->string('district');
             $table->string('tel_client');
             $table->string("type")->nullable();
             $table->integer("surface_min")->nullable();

@@ -29,21 +29,21 @@
             </div>
             <div class="form-group">
                 <label for="district1">Quartier 1</label>
-                <input type="district1" class="form-control" id="district1" name="district1" value="{{ $user->district1 }}" placeholder="Quartier" required>
+                <input type="district1" class="form-control" id="district1" name="district1" value="{{ $user->district1 }}" placeholder="Quartier">
                 @error('district1')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="district2">Quartier 2</label>
-                <input type="district2" class="form-control" id="district2" name="district2" value="{{ $user->district2 }}" placeholder="Quartier" required>
+                <input type="district2" class="form-control" id="district2" name="district2" value="{{ $user->district2 }}" placeholder="Quartier">
                 @error('district2')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="district3">Quartier 3</label>
-                <input type="district3" class="form-control" id="district3" name="district3" value="{{ $user->district3 }}" placeholder="Quartier" required>
+                <input type="district3" class="form-control" id="district3" name="district3" value="{{ $user->district3 }}" placeholder="Quartier">
                 @error('district3')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror

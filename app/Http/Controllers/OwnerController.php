@@ -27,6 +27,7 @@ class OwnerController extends Controller
         $newOwner->name = $request->name;
         $newOwner->email = $request->email;
         $newOwner->tel = $request->tel;
+        $newOwner->user_id = Auth::user()->id;
         $newOwner->save();
         return redirect()->route("agent.owner.list")->with("success","Propriétaire créé avec succès.");
     }

@@ -24,6 +24,7 @@ class Property extends Model
         'image_path',
         'image1_path',
         'image2_path',
+        'user_id',
     ];
 
     public function owner() {

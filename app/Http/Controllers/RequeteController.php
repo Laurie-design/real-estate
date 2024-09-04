@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use App\Models\Requete;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RequeteController extends Controller
 {
@@ -13,7 +15,10 @@ class RequeteController extends Controller
      */
     public function index()
     {
-        $requetes = Requete::all();
+        $requetes = Requete::where('district', Auth::user()->district1)
+            ->orWhere('district', Auth::user()->district2)
+            ->orWhere('district', Auth::user()->district3)
+            ->get();
         return view("agent.requetes_list", compact("requetes"));
     }
 
@@ -23,7 +28,14 @@ class RequeteController extends Controller
     public function create(Request $request)
     {
         $categories = Categorie::all();
-        return view("requete.requete_visitor_new", compact('categories'))->with("input",$request->all());
+        $users_district = User::select('district1', 'district2', 'district3')->get();
+        $districts = [];
+        foreach ($users_district as $user) {
+            $user->district1 ? $districts[] = $user->district1 : null;
+            $user->district2 ? $districts[] = $user->district2 : null;
+            $user->district3 ? $districts[] = $user->district3 : null;
+        }
+        return view("requete.requete_visitor_new", compact('categories', 'districts'))->with("input", $request->all());
     }
 
     /**
@@ -32,6 +44,7 @@ class RequeteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            "district"=> "required",
             "tel"=> "required",
             "categorie_id"=> "required",
         ], [
@@ -39,6 +52,7 @@ class RequeteController extends Controller
         ]);
         $cat = Categorie::findOrFail($request->categorie_id);
         $newReq = new Requete();
+        $newReq->district = $request->district;
         $newReq->tel_client = $request->tel;
         $newReq->type = $cat->name;
         $newReq->surface_min = $request->surface_min;

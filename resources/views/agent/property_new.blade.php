@@ -17,7 +17,7 @@
     <div class="col-lg-8">
         <form id="propertyForm" action="{{ route('property.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
             <div class="form-group">
                 <label for="title">Titre:</label>
                 <input class="form-control" type="text" id="title" name="title" value="{{ old('title') }}" placeholder="Titre du bien" required>
