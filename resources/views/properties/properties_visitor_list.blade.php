@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/properties_client_list.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/carousel.css') }}">
 </head>
+
 <body>
     <header>
         <div class="nav container">
@@ -28,41 +30,55 @@
     </header>
 
     <section id="search-form" class="">
+
+        @if (session('success'))
+            <div id="success-alert" class="alert alert-success" role="alert"
+                style="border-radius: 5px; padding: 10px; width: 50%; margin: 0 auto; text-align: center;">
+                <strong>Succès!</strong> {{ session('success') }}
+            </div>
+        @endif
+
         <form action="" method="GET">
             <div class="form-row">
-              {{-- <div class="col-6">
+                {{-- <div class="col-6">
                 <label for="">Que recherchez vous?</label>
                 <input type="text" class="form-control" name="search" placeholder="" value="{{ isset($input['search']) ? $input['search'] :'' }}">
               </div> --}}
-              <div class="col-12 col-md-3">
-                <label for="">Type de bien</label>
-                <select name="categorie_id" id="" class="form-control">
-                    <option value=""></option>
-                    @foreach ($categories as $cat)
-                        <option value="{{ $cat->id }}" {{ (isset($input['categorie_id']) && $input['categorie_id']==$cat->id) ? 'selected' : '' }}>{{ $cat->name }}</option>
-                    @endforeach
-                </select>
-              </div>
-              <div class="col">
-                <label for="">Prix min</label>
-                <input type="number" name="price_min" min="0" class="form-control" placeholder="" value={{ isset($input['price_min']) && $input['price_min'] ? $input['price_min'] : '' }}>
-              </div>
-              <div class="col">
-                <label for="">Prix max</label>
-                <input type="number" name="price_max" min="0" class="form-control" placeholder="" value={{ isset($input['price_max']) && $input['price_max'] ? $input['price_max'] : '' }}>
-              </div>
-              <div class="col">
-                <label for="">Surface min</label>
-                <input type="number" name="surface_min" min="0" class="form-control" placeholder="" value={{ isset($input['surface_min']) && $input['surface_min'] ? $input['surface_min'] : '' }}>
-              </div>
-              <div class="col">
-                <label for="">Surface max</label>
-                <input type="number" name="surface_max" min="0" class="form-control" placeholder="" value={{ isset($input['surface_max']) && $input['surface_max'] ? $input['surface_max'] : '' }}>
-              </div>
+                <div class="col-12 col-md-3">
+                    <label for="">Type de bien</label>
+                    <select name="categorie_id" id="" class="form-control">
+                        <option value=""></option>
+                        @foreach ($categories as $cat)
+                            <option value="{{ $cat->id }}"
+                                {{ isset($input['categorie_id']) && $input['categorie_id'] == $cat->id ? 'selected' : '' }}>
+                                {{ $cat->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="">Prix min</label>
+                    <input type="number" name="price_min" min="0" class="form-control" placeholder=""
+                        value={{ isset($input['price_min']) && $input['price_min'] ? $input['price_min'] : '' }}>
+                </div>
+                <div class="col">
+                    <label for="">Prix max</label>
+                    <input type="number" name="price_max" min="0" class="form-control" placeholder=""
+                        value={{ isset($input['price_max']) && $input['price_max'] ? $input['price_max'] : '' }}>
+                </div>
+                <div class="col">
+                    <label for="">Surface min</label>
+                    <input type="number" name="surface_min" min="0" class="form-control" placeholder=""
+                        value={{ isset($input['surface_min']) && $input['surface_min'] ? $input['surface_min'] : '' }}>
+                </div>
+                <div class="col">
+                    <label for="">Surface max</label>
+                    <input type="number" name="surface_max" min="0" class="form-control" placeholder=""
+                        value={{ isset($input['surface_max']) && $input['surface_max'] ? $input['surface_max'] : '' }}>
+                </div>
             </div>
             <a href="{{ route('properties.list') }}" class="btn btn-danger my-2 ml-auto">Effacer la recherche</a>
             <button type="submit" class="btn btn-primary my-2 ml-auto">Rechercher</button>
-          </form>
+        </form>
     </section>
 
     <section class="properties-container">
@@ -72,13 +88,14 @@
                 <p>Aucune propriété disponible.</p>
                 <p class="text-center">
                     <a href="{{ route('requete.create', [
-                        'search'=>isset($input['search']) ? $input['search'] :'',
-                        'categorie_id'=>isset($input['categorie_id']) ? $input['categorie_id'] :'',
-                        'price_min'=>isset($input['price_min']) ? $input['price_min'] :'',
-                        'price_max'=>isset($input['price_max']) ? $input['price_max'] :'',
-                        'surface_min'=>isset($input['surface_min']) ? $input['surface_min'] :'',
-                        'surface_max'=>isset($input['surface_max']) ? $input['surface_max'] :'',
-                    ]) }}" class="btn btn-success text-success-emphasis px-5">
+                        'search' => isset($input['search']) ? $input['search'] : '',
+                        'categorie_id' => isset($input['categorie_id']) ? $input['categorie_id'] : '',
+                        'price_min' => isset($input['price_min']) ? $input['price_min'] : '',
+                        'price_max' => isset($input['price_max']) ? $input['price_max'] : '',
+                        'surface_min' => isset($input['surface_min']) ? $input['surface_min'] : '',
+                        'surface_max' => isset($input['surface_max']) ? $input['surface_max'] : '',
+                    ]) }}"
+                        class="btn btn-success text-success-emphasis px-5">
                         Envoyer une requête
                     </a>
                 </p>
@@ -86,14 +103,17 @@
         @else
             @foreach ($properties as $property)
                 <div class="property-item">
-                    <div id="{{ $property->id."carousel" }}" class="lite-carousel slide" data-ride="carousel">
+                    <div id="{{ $property->id . 'carousel' }}" class="lite-carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <img class=" active" src="{{ asset('storage/' . $property->image_path) }}" alt="First slide">
+                            <img class=" active" src="{{ asset('storage/' . $property->image_path) }}"
+                                alt="First slide">
                             @if ($property->image1_path)
-                                <img class="" src="{{ asset('storage/' . $property->image1_path) }}" alt="Second slide">
+                                <img class="" src="{{ asset('storage/' . $property->image1_path) }}"
+                                    alt="Second slide">
                             @endif
                             @if ($property->image2_path)
-                                <img class="" src="{{ asset('storage/' . $property->image2_path) }}" alt="Third slide">
+                                <img class="" src="{{ asset('storage/' . $property->image2_path) }}"
+                                    alt="Third slide">
                             @endif
                         </div>
                     </div>
@@ -104,7 +124,8 @@
                         <p class="info-p address"> <i class='bx bxs-been-here'></i> {{ $property->address }}</p>
                         <p class="info-p surface"> <i class='bx bx-area'></i> {{ $property->surface }} m²</p>
                         <div class="action-group">
-                            <a href="{{ route('property.show', ['id'=>$property->id]) }}" class="btn btn-primary">Voir</a>
+                            <a href="{{ route('property.show', ['id' => $property->id]) }}"
+                                class="btn btn-primary">Voir</a>
                             <p class="info-p price">{{ number_format($property->price, 2) }} Fcfa</p>
                         </div>
                     </div>
@@ -144,7 +165,23 @@
             <p>&#169; CarpoolVenam Tous droits réservés</p>
         </div> --}}
 
-    <script src="{{ URL::asset('assets/js/carousel.js') }}"></script>
+        <script src="{{ URL::asset('assets/js/carousel.js') }}"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var alertElement = document.getElementById('success-alert');
+                if (alertElement) {
+                    setTimeout(function() {
+                        alertElement.style.transition = "opacity 1s ease";
+                        alertElement.style.opacity = "0";
+                        setTimeout(function() {
+                            alertElement.style.display = 'none';
+                        }, 1000);
+                    }, 5000); // Le message disparaît après 5 secondes
+                }
+            });
+        </script>
+        
 
 </body>
+
 </html>

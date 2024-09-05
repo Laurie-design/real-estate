@@ -11,12 +11,36 @@
         </div>
     </div>
 
-    <script>
-        setTimeout(function() {
-            document.getElementById('success-alert').style.display = 'none';
-        }, 5000);
-    </script>
 @endif
+
+@if(session('success'))
+    <div id="success-alert" class="alert alert-success d-flex align-items-center" role="alert" style="border: 1px solid #28a745; border-radius: 5px; background-color: #e9f7ef; padding: 10px;">
+        <i class="fas fa-check-circle" style="font-size: 24px; margin-right: 10px; color: #28a745;"></i>
+        <div>
+            {{ session('success') }}
+        </div>
+    </div>
+@endif
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Vérifier que l'élément existe avant d'appliquer les modifications
+        var alertElement = document.getElementById('success-alert');
+        if (alertElement) {
+            setTimeout(function() {
+                // Appliquer une transition d'opacité sur 1 seconde
+                alertElement.style.transition = "opacity 1s ease";
+                alertElement.style.opacity = "0"; // Diminuer l'opacité à 0
+
+                // Après la transition d'opacité, retirer complètement l'élément
+                setTimeout(function() {
+                    alertElement.style.display = 'none';
+                }, 1000); // Après la transition de 1 seconde
+            }, 5000); // Le message disparaît après 5 secondes
+        }
+    });
+</script>
+
 
 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
     <div>

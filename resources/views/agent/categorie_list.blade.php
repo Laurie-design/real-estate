@@ -1,6 +1,17 @@
 @extends('layouts.agent.base')
 
 @section('content')
+
+
+@if(session('success'))
+    <div id="success-alert" class="alert alert-success d-flex align-items-center" role="alert" style="border: 1px solid #28a745; border-radius: 5px; background-color: #e9f7ef; padding: 10px; width: 50%; height: 50px; margin: 0 auto;">
+        <i class="fas fa-check-circle" style="font-size: 30px; margin-right: 15px; color: #28a745;"></i>
+        <div style="line-height: 30px;">
+            {{ session('success') }}
+        </div>
+    </div>
+@endif 
+
     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
         <div>
             <h3 class="fw-bold mb-3">Liste des catégories</h3>
@@ -69,7 +80,18 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function() {
+        document.addEventListener("DOMContentLoaded", function() {
+            var alertElement = document.getElementById('success-alert');
+            if (alertElement) {
+                setTimeout(function() {
+                    alertElement.style.transition = "opacity 1s ease";
+                    alertElement.style.opacity = "0";
+                    setTimeout(function() {
+                        alertElement.style.display = 'none';
+                    }, 1000);
+                }, 5000);
+            }
+            
             $("#basic-datatables").DataTable({});
 
             $("#multi-filter-select").DataTable({

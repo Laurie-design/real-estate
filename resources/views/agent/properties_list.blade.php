@@ -90,7 +90,7 @@
                     alertElement.style.opacity = "0";
                     setTimeout(function() {
                         alertElement.style.display = 'none';
-                    }, 1000); // Attend que l'animation soit terminée avant de masquer l'élément
+                    }, 1000);
                 }, 5000);
             }
 

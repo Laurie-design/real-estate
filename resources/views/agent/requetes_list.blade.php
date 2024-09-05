@@ -1,6 +1,15 @@
 @extends('layouts.agent.base')
 
 @section('content')
+
+@if(session('success'))
+    <div id="success-alert" class="alert alert-success d-flex align-items-center" role="alert" style="border: 1px solid #28a745; border-radius: 5px; background-color: #e9f7ef; padding: 10px; width: 50%; height: 50px; margin: 0 auto;">
+        <i class="fas fa-check-circle" style="font-size: 30px; margin-right: 15px; color: #28a745;"></i>
+        <div style="line-height: 30px;">
+            {{ session('success') }}
+        </div>
+    </div>
+@endif 
     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
         <div>
             <h3 class="fw-bold mb-3">Liste des Requetes</h3>
@@ -132,6 +141,9 @@
                     ]);
                 $("#addRowModal").modal("hide");
             });
+            setTimeout(function() {
+                $('#success-alert').fadeOut('slow');
+            }, 5000); 
         });
     </script>
 @endsection

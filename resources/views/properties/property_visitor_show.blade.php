@@ -63,7 +63,7 @@
             <p class=""><strong>Meublé:</strong> {{ $property->furnished ? 'Oui' : 'Non' }}</p>
             <p class=""><strong>Nombre d'étages:</strong> {{ $property->total_floors }}</p>
             <p class=""><strong>Surface:</strong> {{ $property->surface }} m²</p>
-            <p class=""><strong>Type:</strong> {{ $property->type }}</p>
+            <p class=""><strong>Type:</strong> {{ $property->categorie->name }}</p>
         </div>
 
         <br>

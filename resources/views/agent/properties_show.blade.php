@@ -2,14 +2,14 @@
 
 @section('content')
 
-{{-- @if(session('success'))
+@if(session('success'))
     <div class="alert alert-success d-flex align-items-center" role="alert" style="border: 1px solid #28a745; border-radius: 5px; background-color: #e9f7ef; padding: 10px;">
         <i class="fas fa-check-circle" style="font-size: 24px; margin-right: 10px; color: #28a745;"></i>
         <div>
             {{ session('success') }}
         </div>
     </div>
-@endif --}}
+@endif
 
     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
         <div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Demande;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class DemandeController extends Controller
 {
@@ -37,8 +39,10 @@ class DemandeController extends Controller
         $newDemande = new Demande();
         $newDemande->property_id = $id;
         $newDemande->tel_client = $request->tel;
+        $newDemande->user_id = Auth::user()->id;
+
         $newDemande->save();
-        return redirect()->route('properties.list')->with('success',"Demande enregistrée");
+        return redirect()->route('properties.list')->with('success',"Demande envoyée avec succès");
     }
 
     public function destroy(Request $request, $id)

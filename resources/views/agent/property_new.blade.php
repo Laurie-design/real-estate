@@ -63,13 +63,7 @@
                 @enderror
             </div>
 
-            {{-- <div class="form-group">
-                <label for="floor_number">Numéro d'étage:</label>
-                <input class="form-control" type="number" id="floor_number" name="floor_number" value="{{ old('floor_number') }}" placeholder="Numéro d'étage" required>
-                @error('floor_number')
-                    <div style="color: red;">{{ $message }}</div>
-                @enderror
-            </div> --}}
+            
 
             <div class="form-group">
                 <label for="furnished">Meublé:</label>

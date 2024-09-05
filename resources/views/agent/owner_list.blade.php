@@ -1,6 +1,16 @@
 @extends('layouts.agent.base')
 
 @section('content')
+
+@if(session('success'))
+    <div id="success-alert" class="alert alert-success d-flex align-items-center" role="alert" style="border: 1px solid #28a745; border-radius: 5px; background-color: #e9f7ef; padding: 10px; width: 50%; height: 50px; margin: 0 auto;">
+        <i class="fas fa-check-circle" style="font-size: 30px; margin-right: 15px; color: #28a745;"></i>
+        <div style="line-height: 30px;">
+            {{ session('success') }}
+        </div>
+    </div>
+@endif 
+
     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
         <div>
             <h3 class="fw-bold mb-3">Liste des Propriétaires</h3>
@@ -72,7 +82,20 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function() {
+         $(document).ready(function() {
+            // Vérifie si l'alerte de succès existe
+            var alertElement = $('#success-alert');
+            if (alertElement.length) {
+                // Délai avant que l'alerte ne commence à disparaître (5 secondes)
+                setTimeout(function() {
+                    // Transition de disparition avec jQuery
+                    alertElement.fadeOut(1000, function() {
+                        // Supprime complètement l'élément du DOM après la disparition
+                        alertElement.remove();
+                    });
+                }, 5000); // 5000 millisecondes = 5 secondes
+            }
+            
             $("#basic-datatables").DataTable({});
 
             $("#multi-filter-select").DataTable({
@@ -126,6 +149,8 @@
                     ]);
                 $("#addRowModal").modal("hide");
             });
+
+            
         });
     </script>
 @endsection
