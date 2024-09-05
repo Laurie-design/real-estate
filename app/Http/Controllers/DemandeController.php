@@ -15,7 +15,7 @@ class DemandeController extends Controller
      */
     public function index()
     {
-        $demandes = Demande::all();
+        $demandes = Auth::user()->demandes;
         return view("agent.demandes_list", compact("demandes"));
     }
 
@@ -39,7 +39,7 @@ class DemandeController extends Controller
         $newDemande = new Demande();
         $newDemande->property_id = $id;
         $newDemande->tel_client = $request->tel;
-        $newDemande->user_id = Auth::user()->id;
+        $newDemande->user_id = $property->user_id;
 
         $newDemande->save();
         return redirect()->route('properties.list')->with('success',"Demande envoyée avec succès");

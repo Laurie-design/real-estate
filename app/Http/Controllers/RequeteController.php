@@ -31,9 +31,9 @@ class RequeteController extends Controller
         $users_district = User::select('district1', 'district2', 'district3')->get();
         $districts = [];
         foreach ($users_district as $user) {
-            $user->district1 ? $districts[] = $user->district1 : null;
-            $user->district2 ? $districts[] = $user->district2 : null;
-            $user->district3 ? $districts[] = $user->district3 : null;
+            $user->district1 ? $districts[$user->district1] = $user->district1 : null;
+            $user->district2 ? $districts[$user->district2] = $user->district2 : null;
+            $user->district3 ? $districts[$user->district3] = $user->district3 : null;
         }
         return view("requete.requete_visitor_new", compact('categories', 'districts'))->with("input", $request->all());
     }
